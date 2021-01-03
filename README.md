@@ -3,7 +3,7 @@
 ### Email: zhufang147@gmail.com
 ### Contents
 
-#### Lecture 1. Matrix-Vector Multiplication (completed 2020. 2.7)
-#### Lecture 2. Orthogonal Vectors and Matrices (completed 2020. 2. 21) 
+#### Lecture 1. Matrix-Vector Multiplication (completed)
+#### Lecture 2. Orthogonal Vectors and Matrices (onging) 
 
 
