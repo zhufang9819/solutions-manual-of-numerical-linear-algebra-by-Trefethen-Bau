@@ -1,2 +1,0 @@
-### Contents
-#### Lecture 1
