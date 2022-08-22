@@ -10,4 +10,5 @@ Code was written by [Julia](https://julialang.org/), which is an excellent Numer
 #### Lecture 1. Matrix-Vector Multiplication (Completed)
 #### Lecture 2. Orthogonal Vectors and Matrices (Completed)
 #### Lecture 3. Norms (Ongoing)
+#### Lecture 4. The Singular Value Decomposition (Ongoing)
 
