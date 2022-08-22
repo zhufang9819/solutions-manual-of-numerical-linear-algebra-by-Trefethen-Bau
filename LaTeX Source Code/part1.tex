@@ -1,0 +1,339 @@
+
+\part{Fundamentals}
+
+%=========== Matrix-Vector Multiplication =============%
+\chapter{Matrix-Vector Multiplication}
+
+\section{Prerequisite}
+todo...
+
+\section{Solutions}
+\begin{enumerate}
+    \item [1.3] {
+    \begin{proof}
+    We denote a non-singular matrix $\bm{R}$ as
+    $$
+    \bm{R} = \left(\begin{array}{ccc}
+         r_{11} & \cdots & r_{1m}  \\
+         \vdots & \ddots & \vdots \\
+         0 & \cdots & r_{mm}
+    \end{array}\right),
+    $$
+    it is clear that $r_{ii} \neq 0$, otherwise $\bm{R}$ is singular. Since $\bm{R}$ is non-singular, we assume that
+    \[ \bm{I} = (\bm{e}_1, \bm{e}_2, \cdots, \bm{e}_{m}) = (\bm{a}_1, \bm{a}_2, \cdots, \bm{a}_n)\left(\begin{array}{ccc}
+         r_{11} & \cdots & r_{1m}  \\
+         \vdots & \ddots & \vdots \\
+         0 & \cdots & r_{mm}
+    \end{array}\right)
+    \]
+    where $(\bm{a}_1, \cdots, \bm{a}_n) = \bm{R}^{-1}$. To show $\bm{R}^{-1}$ is upper-triangular, we work by induction. To begin with, we have $\bm{e}_1 = r_{11} \bm{a}_1$ and hence $\bm{a_1} = r_{11}^{-1} \vec{e}_1$ has \textit{zero entries} except the first one. For convenience, we denote by $\mathbb{C}^{m}_{k}$ the column space
+    \[ \mathbb{C}_{k}^{m} = \{ \bm{v} = (v_1, \cdots, v_{k}, 0,\cdots, 0)^{T}, v_{i} \neq 0 ~(1\leq i \leq k)\}, \]
+    Then
+    \[ \mathbb{C}^{m}_1 \subset \mathbb{C}^{m}_{2} \cdots \mathbb{C}^{m}_{m}  = \mathbb{C}^{m}. \]
+    We have shown that $a_1 \in \mathbb{C}^{m}(1)$, assume that for any $k \leq s$, we have that $\mathbf{a}_k \in \mathbb{C}^{m}_{k}$. Then by equation \textit{Page 8, (1.8)}, we have
+    \[\bm{e}_{s+1} = \sum_{k=1}^{m} \bm{a}_k r_{k,s+1}.\]
+    Note that $r_{k,s+1} = 0, ~\forall k > s+1$, then
+    \[ \sum_{k=1}^{m} \bm{a}_k r_{k, s+1} = \sum_{k = 1}^{s} \bm{a}_k r_{k, s+1} + \bm{a}_{s+1} r_{s+1, s+1} = \bm{e}_{s+1},\]
+    Therefore
+    \[ \bm{a}_{s+1} = r_{s+1,s+1}^{-1} (\vec{e}_{s+1} - \sum_{k=1}^{s} \bm{a}_{k} r_{k,s+1}) \in \mathbb{C}^{m}_{s+1}\]
+    By induction, we have proved that $\bm{a}_{k} \in \mathbb{C}^{m}_{k}$ for $1 \leq k \leq m$, which is equivalent to the fact that $\bm{R}^{-1}$ is upper-triangular.
+    \end{proof}
+    }
+    
+    \item[1.4(a)] {
+    \begin{proof}
+    Denote the column vectors $(c_1, \cdots, c_n)^{T}$, $(d_1, \cdots, d_n)^{T}$ by notations $\bm{c}$ and $\bm{d}$, let $\bm{F}$ be the matrix whose $(i,j)$ entry is $f_j(i)$. Then, the given condition can be rephrased as: ForAll $\bm{d} \in \mathbb{C}^8$, there must exist a vector $\bm{c}$ such that $\bm{F} \bm{c} = \bm{d}$. This means that 
+    $$
+    \mathrm{range} \{\bm{F} \} = \mathbb{C}^8, 
+    $$ 
+    which implies that $\bm{F}$ has full rank by \textit{theorem 1.3}. Furthermore, $\mathbf{F}$ is non-singular. Therefore
+    \[ \bm{c} = \bm{F}^{-1} \bm{d}\]
+    and hence $\bm{d}$ determines $\bm{c}$ uniquely.\\
+    \end{proof}
+    }
+    \item[1.4(b)]{
+    The given condition can be reformatted as
+    $$
+    \bm{A} \bm{d} = \bm{c}.
+    $$
+    Note that $\bm{c} = \bm{F}^{-1} \bm{d}$, then 
+    $$
+    \bm{A} \bm{d}  = \bm{c} = \bm{F}^{-1} \bm{d},
+    $$
+    then we have
+    $$
+    (\bm{FA} - \bm{I})\bm{d } = \bm{0}, 
+    $$
+    note that this equation above is true for any $d \in \mathbb{C}^{8}$, then $\bm{FA} - \bm{I}$ must be \textit{zero matrix}, which is $\bm{FA} = \bm{I}$. Hence the $i,j$ entry of $\bm{A}^{-1}$ is the $i,j$ entry of $\bm{F}$ we defined in (a).
+    }
+\end{enumerate}
+
+    
+   
+    
+%=========== Orthogonal Vectors and Matrices ================%
+
+\chapter{Orthogonal Vectors and Matrices}
+    
+    \section{Prerequisite}
+    Before giving the solutions, I would like to prove some basic conclusions about this lecture
+    \begin{lemma}
+        Given an non-singular matrix $\bm{A}$, then $\bm{A}^{-1}$ is unique
+        \begin{proof}
+        Suppose that we have two inverse matrices $\bm{C}$ and $\bm{B}$ w.r.t $\bm{A}$. By the definition of inverse. 
+        \[\bm{B} =\bm{BI} = \bm{B(AC)} = \bm{(BA)C} = \bm{IC} = \bm{C},\]
+        and hence we can conclude that $\bm{B} = \bm{C}$.
+        \end{proof}
+        \label{lem:inv-unique}
+    \end{lemma} 
+    
+    \begin{lemma}
+        Given an non-singular matrix $\bm{A} \in \mathbb{R}^{m\times m}$ , its hermitian conjugate $\bm{A}^{*}$ is also non-singular.
+        \begin{proof}
+            \[\bm{A}^{-1}\bm{A} = \bm{A}\bm{A}^{-1} = \bm{I},\]
+        We can apply the hermitian conjugate to both sides of the equation above:
+            \[ \bm{A}^{*} (\bm{A}^{-1})^{*} = (\bm{A}^{-1})^{*}\bm{A}^{*} =  \bm{I}\]
+        Hence we can get that $\bm{A}^{*}$ is non-singular.
+        \end{proof}
+        \label{lem:22}
+    \end{lemma} 
+    
+    \begin{lemma}
+    Give a non-singular matrix $\bm{A}$ and its hermitian conjugate $\bm{A}^{*}$, we have
+    \[(\bm{A}^{*})^{-1} = (\bm{A}^{-1})^{*}\]
+    \end{lemma}
+    \begin{proof}
+    By lemma \ref{lem:22}, $\bm{A}^{*}$ is non-singular and it's clear that the inverse is $(\bm{A}^{-1})^{*}$. However, we can get that $(\bm{A}^{*})^{-1}$ is also the inverse of $\bm{A}^{*}$ by definition.
+    Futher, by lemma \ref{lem:inv-unique}, we have
+    $$
+    (\bm{A}^{*})^{-1} = (\bm{A}^{-1})^{*}
+    $$
+    which is exactly what we need to prove.
+    \end{proof}
+    
+    \begin{lemma}
+    Given two pure imaginary number $di, bi$, then 
+    $$
+    (1-di) (1-bi) \neq 0.
+    $$
+    \begin{proof}
+    LHS equals
+    \begin{equation*}
+    1-bd - (b+d)i, \tag{$\star$}
+    \end{equation*}
+    if $(\star) = 0$, then we have
+    $$
+    \begin{aligned}
+    1 - bd &= 0 \\
+    b+d &=0,
+    \end{aligned}
+    $$
+    which means that
+    $$
+    -b^2 = 1,
+    $$
+    since $b \in \mathbb{R}$, the equation above cannot be true, and hence $(1-di)(1-bi) \neq 0$.
+    \end{proof}
+    \end{lemma}
+
+\section{Solutions}
+\begin{enumerate}
+    \item [2.1] {
+    \begin{proof}
+        Without loss of generality, we assume that $\bm{A}$ is upper-triangular. By the \textit{ex. 1.3}, we can conclude that $\bm{A}^{-1}$ is also upper-triangular. It is clear that $\bm{A}^{*} = \bm{A}^{-1}$ since $\bm{A}$ is unitary. Then $\bm{A}^{\star}$ is also an upper-triangular matrix, which is
+        $$
+        \bm{A}^{\star}_{i,j} = \bar{a}_{ji} = a_{ij} = 0, \quad (\forall i > j),
+        $$
+        Hence, the matrix $\bm{A}$ is diagonal. The same follows if $\bm{A}$ is lower-triangular.
+    \end{proof}
+    }
+
+	
+    \item[2.3~(a)] {
+    Let $\bm{x}$ be an eigenvector of matrix $\bm{A}$ w.r.t. the eigenvalue $\lambda$, then
+    \[\bm{A}\bm{x} = \lambda \bm{x},\]
+    multiplying both sides by $\bm{x}^{\star}$, we get that
+    \begin{equation*}
+    \bm{x}^{\star} \bm{A} \bm{x} = \lambda \bm{x}^{\star}\bm{x} = \lambda \| \bm{x} \|^{2}, \tag{$\spadesuit$}
+    \end{equation*}
+    then 
+    $$
+    \lambda = \frac{\bm{x}^{\star} \bm{A} \bm{x} }{ \| \bm{x} \|^{2}} = \frac{\bm{x}^{\star} \bm{A}^{\star} \bm{x} }{ \| \bm{x} \|^{2}} = \frac{(\bm{x}^{\star} \bm{A} \bm{x} )^{\star}}{ \| \bm{x} \|^{2}} = \bar{\lambda},
+    $$
+    which means that $\lambda$ is real. }
+    
+    \item[2.3~(b)] {
+    Let $\bm{x}_1, \bm{x}_2$ be  two eigenvectors of the hermitian matrix $\bm{A}$. Denote $\lambda_k $ the eigenvalue w.r.t $\bm{x}_k (k=1,2)$, where $\lambda_1 \neq \lambda_2 $, then
+    $$
+    \begin{aligned}
+    \lambda_2 \bm{x}_1^\star \bm{x_2} &= \bm{x}_1^{\star} \bm{A} \bm{x}_{2}, \\
+    \lambda_1 \bm{x}_2^\star \bm{x_1} &= \bm{x}_2^{\star} \bm{A} \bm{x}_{1}.
+    \end{aligned}
+    $$
+    Note that $\bm{A}$ is hermitian, we can get that
+    $$
+    \lambda_2 \bm{x}_1^{\star} \bm{x}_2 = \bm{x}_1^{\star} \bm{A} \bm{x}_2 = \bm{x}_1^{\star} \bm{A}^{\star} \bm{x}_2 =  (\bm{x}_2^{\star} \bm{A} \bm{x}_1)^{\star} = \lambda_1^{\star} \bm{x}_1^{\star} \bm{x}_2,
+    $$
+    then
+    $$
+    (\lambda_2 - \lambda_1^{\star}) \bm{x}_1^{\star} \bm{x}_2 = 0 \Rightarrow \bm{x}_1^{\star} \bm{x}_2 = 0,
+    $$
+    which is exactly what we need to prove.
+    }
+    
+    \item[2.4] {
+    Let $\lambda$ be an eigenvalue of $\bm{A}$, and $\bm{x}$ be the eigenvector w.r.t $\lambda$, then we have $\bm{Ax} = \lambda \bm{x}$ and $\| \bm{Ax} \|_2^2 = \| \lambda \bm{x} \|$, which is
+    $$
+    \bm{x}^{\star} \bm{A}^{\star} \bm{Ax} = \bm{x}^{\star} \| \lambda^\star \lambda \| \bm{x}. 
+    $$
+    Since $\bm{A}$ is unitary, then
+    $$
+    \bm{x}^{\star} \bm{A}^\star \bm{A} \bm{x} = \bm{x}^{\star} \bm{Ix} = \bm{x}^{\star} \| \lambda \|_2^2 \bm{x}.
+    $$
+    Furthermore,
+    $$
+    x_1^2 + x_2^2 + \cdots + x_n^2 = \| \lambda \|_2^2(x_1^2 + x_2^2 + \cdots + x_n^2),
+    $$
+    it follows that $\| \lambda \|_2^2 = 1$ since $\bm{x}$ is non-zero vector.
+    }
+    
+    \item[2.5(a)] {
+     Let $\bm{x}$ be an eigenvector of matrix $\bm{S}$ w.r.t. the eigenvalue $\lambda$, then 
+     \[\bm{S}\bm{x} = \lambda \bm{x}.\]
+     By the equation $ex.~2.3(\spadesuit)$, we have
+    $$
+    \lambda = \frac{\bm{x}^{\star} \bm{S} \bm{x} }{ \| \bm{x} \|^{2}} = \frac{\bm{x}^{\star} (-\bm{S}^{\star}) \bm{x} }{ \| \bm{x} \|^{2}} = \frac{-(\bm{x}^{\star} \bm{S} \bm{x} )^{\star}}{ \| \bm{x} \|^{2}} = -\bar{\lambda},
+    $$
+    then we can get that $\lambda + \bar{\lambda} = 0$, which means that $\lambda$ is purely imaginary.
+    }
+    
+    \item[2.5(b)] {
+    Assume that $\lambda$ is the eigenvalue of $\bm{S}$, it follows that $1- \lambda$ is the eigenvalue of $1 - \bm{S}$. Since $\lambda$ is purely imagnary number, then by \textit{Lemma 2.1.4}, we have
+    $$
+    \det{(1-\bm{S})}  = \prod_{i=1}^{n} (1 - \lambda_i) \neq 0,
+    $$
+    where $\lambda_i, i \in \{1, 2, \cdots, n\}$ are eigenvalues of $\bm{S}$. Hence we can conclude that $1-\bm{S}$ is non-singular. 
+    }
+    
+    \item[2.5(c)] {
+        Assume that $\bm{Q} = (\bm{I} - \bm{S})^{-1}(\bm{I} + \bm{S})$, then we have
+        $$
+        \begin{aligned}
+        \bm{Q}\bm{Q}^{\star} = (\bm{I}-\bm{S})^{-1} (\bm{I} + \bm{S}) (\bm{I} + \bm{S}^{\star})\left((\bm{I} + \bm{S})^{-1}\right)^{\star},
+        \end{aligned}
+        $$
+        by \textit{Lemma 2.1.3}, we can get that
+        $$
+        \begin{aligned}
+        \bm{Q}\bm{Q}^{\star} &= (\bm{I}-\bm{S})^{-1} (\bm{I} + \bm{S}) (\bm{I} - \bm{S})\left((\bm{I} - \bm{S})^{-1}\right)^{\star}\\
+        &= (\bm{I}-\bm{S})^{-1} \textcolor{red}{(\bm{I} + \bm{S})}\textcolor{blue}{(\bm{I} - \bm{S})} (\bm{I} + \bm{S})^{-1} \\
+        &= (\bm{I}-\bm{S})^{-1} \textcolor{blue}{(\bm{I} - \bm{S})}\textcolor{red}{(\bm{I} + \bm{S})} (\bm{I} + \bm{S})^{-1} \\
+        &= \bm{I}.
+        \end{aligned} 
+        $$
+        Hence, we can conclude that $(1-\bm{S})^{-1}(1-\bm{S})$ is unitary.
+    }
+    
+    \item[2.6] {
+    \begin{proof}
+        If $\bm{A}$ is singular, there exists a vector $\bm{x} \in \mathbb{C}\setminus \{0\}$ such that
+        $$
+         \bm{Ax} = \bm{x} + \bm{u}\bm{v}^{\star} \bm{x} = 0,
+        $$
+        then $\bm{x} = -\bm{u}(\bm{v}^{\star} \bm{x})$ where $\bm{v}^{\star} \bm{u}$ is scalar. Let $\bm{x} = t\bm{u} (t \in \mathbb{R})$, then we can get that 
+        $$
+        t\bm{u} + \bm{u} (\bm{v}^{\star} t \bm{u}) = t\bm{u} (1+ \bm{v}^{\star} \bm{u}) = 0,
+        $$
+        It follows that $\bm{v}^{\star} \bm{u} = -1$ since $\bm{x} = t\bm{u} \neq 0$. Assume that $\alpha = -1/(1 + \bm{v}^{\star} \bm{u})$, then
+        $$
+        (\bm{I}+\bm{u} \bm{v}^{\star})(\bm{I} + \alpha \bm{u}\bm{v}^{\star}) = \bm{I}.
+        $$
+        Note that we have shown that $\bm{v}^{\star}\bm{u} = -1$ is a necessary condition of $\bm{A}$ is singular. For suffciency, we assume that $\bm{v}^{\star} \bm{u} = -1$. Then for any $ t \in \mathbb{C} \setminus \{ 0 \}$, we have
+        $$
+        \bm{Au} = t\bm{u} + \bm{u}\bm{v}^{\star} t \bm{u} = t\bm{u} + t\bm{u} (\bm{v}^{\star} \bm{u}) = 0,
+        $$
+        which implies that $\bm{A}$ is singular. Combined, we conclude that $\bm{A}$ is singular iff. $\bm{v}^{\star} \bm{u} = -1$. In this case, 
+        $$
+        \mathrm{null} (\bm{A}) = \{ t\bm{u}, t \in \mathbb{R} \},
+        $$
+        the linear subspace spanned by $\bm{u}$.
+    \end{proof}
+    }
+    
+    \item[2.7] {
+    \begin{proof}
+    We can verify that $\bm{H}_{k+1}$ is Hadamard matrix directly,
+    
+    $$
+    \begin{aligned}
+    \bm{H}_{k+1}^{T} \bm{H}_{k+1} & = \left(\begin{array}{cc}
+        \bm{H}_{k}^T &  \bm{H}_{k}^T\\
+         \bm{H}_{k}^T& -\bm{H}_{k}^T
+    \end{array}\right)  \left(\begin{array}{cc}
+        \bm{H}_{k} &  \bm{H}_{k}\\
+         \bm{H}_{k} & -\bm{H}_{k}
+    \end{array}\right)\\
+    &= \left(\begin{array}{cc}
+         \bm{H}_{k}^T \bm{H}_{k} + \bm{H}_{k}^T\bm{H}_{k}& \bm{H}_{k}^T \bm{H}_{k}-\bm{H}_{k}^T \bm{H}_{k} \\
+         \bm{H}_{k}^T \bm{H}_{k} - \bm{H}_{k}^T \bm{H}_{k}& \bm{H}_{k}^T \bm{H}_{k}+\bm{H}_{k}^T \bm{H}_{k} 
+    \end{array}\right) \\
+    &= \left( \begin{array}{cc}
+         2\bm{H}_{k}^T \bm{H}_k& \bm{0} \\
+         \bm{0}& 2\bm{H}_{k}^T \bm{H}_k 
+    \end{array} \right) \\
+    &= \left( \begin{array}{cc}
+         2\bm{I}_k & \bm{0} \\
+         \bm{0}& 2\bm{I}_k 
+    \end{array} \right) \\
+    &= 2c \cdot \bm{I}_{2k}.
+    \end{aligned}
+    $$
+    Then we can get that $\bm{H}_{k+1}^{T} = 2c \bm{H}_{k+1}^{-1}$. Note that the entries of $\bm{H}_{k+1}$ are also all $\pm 1$ by the recursion formula. Hence $\bm{H}_{k+1}$ is also a Hadamard matrix.
+    \end{proof}
+    }
+\end{enumerate}
+
+\chapter{Norms}
+
+\section{Prerequisite}
+\begin{lemma}
+Given a permutation matrix $\bf{P} \in \mathcal{M}_{m \times n}$, and a vector $\bm{x} \in \mathbb{C}^{n}$, then 
+$$
+    \|\bm{Px} \|_p = \|\bm{x} \|_p. 
+$$
+\begin{proof} 
+By the definition of vector norm, then
+$$
+\|\bm{x}\|_p = \begin{cases}
+\left(\sum_{i=1}^{m} |x_i|^{p})^{\frac{1}{p}}\right), & 1\leq p < \infty; \\
+\max_{i} \{ x_i \}, & p = \infty .
+\end{cases}
+$$
+It is clear that $\| \bm{x} \|_p$ won't be changed after permutation of entries. Therefore, for any permutation matrix $\bm{P}$,
+$$
+    \|\bm{Px} \|_p = \|\bm{x} \|_p,
+$$
+which is what we need to prove.
+\end{proof}
+\end{lemma}
+
+\begin{corollary}
+Given matrix $\bm{A} \in \mathcal{M}_{m\times n} $ and two permutation matrix $\bm{P} \in \mathcal{M}_{m \times m}, \bm{Q} \in \mathcal{M}_{n \times n}$. Then,
+$$
+\| \bm{PAQ}\|_{p} = \|  \bm{A} \|_{p}.
+$$
+\end{corollary}
+\section{Solutions}
+\begin{enumerate}
+    \item[3.1] {
+    By equation (3.3), we can get that
+    $$
+         \| \bm{x} \|_{\bm{W}} = \|\bm{Wx} \|,
+    $$
+    where $\| \cdot \|$ is a vector norm. It is clear that $\|\cdot \|_{\bm{W}}$ meets (2), (3) of the vector norm's definition. Furthermore, we assume that
+    \begin{equation*}
+    \bm{Wx} = \bm{0}.  \tag{$\star$}
+    \end{equation*}
+    }
+    Since $\bm{W}$ is non-singular, $(\star)$ is true iif. $\bm{x} = \bm{0}$. Then $\| x\|_{\bm{W}} = \|\bm{Wx} \| \geq 0$, and $\| \bm{x} \|= 0 $ iif. $\| \bm{x} \| = 0$, which meets condition (1) of vector norm's definition. Hence, we can conclude that $\| \cdot \|_{\bm{W}}$ is a vector norm.
+\end{enumerate}
