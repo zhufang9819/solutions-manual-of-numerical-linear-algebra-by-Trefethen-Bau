@@ -1,0 +1,4 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "latex-workshop.latex.autoBuild.run": "never"
+}

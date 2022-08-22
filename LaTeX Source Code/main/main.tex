@@ -1,6 +1,7 @@
 \documentclass{book}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{bm}
 \usepackage{amsfonts}
 \usepackage{titlesec}
@@ -21,7 +22,8 @@
 
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newtheorem*{remark}{Remark}
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{definition}{Definition}[chapter]
 \newtheorem{problem}{Problem}
 \newtheorem{corollary}{Corollary}[chapter]
 \newtheorem{lemma}{Lemma}[chapter]
@@ -35,8 +37,23 @@
 \tableofcontents
 
 
+%======= Part 1 Fundamental ============%
+\part{Fundamental}
 
-\include{part1}
+%============ Matrix-Vector Multiplication ============%
+\chapter{Matrix Vector Multiplication}
+\include{part1/matrx_vector_multiplication.tex}
+
+%=========== Orthogonal Vectors and Matrices ==========%
+
+\chapter{Orthogonal Vectors and Matrices}
+\include{part1/ortho_vector_mat.tex}
+
+%======================= Norm =========================%
+\chapter{Norms}
+\include{part1/norms.tex}
+
+
 
 
 \end{document}
