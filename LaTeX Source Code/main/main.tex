@@ -10,6 +10,7 @@
 \usepackage{booktabs}
 \usepackage{amsthm}
 \usepackage{listings}
+\usepackage{exsheets}
 
 %% Font Policy
 % vector, \bm{}
@@ -19,6 +20,13 @@
 %%%% Define "Lecture" (from redefining "Chapter") %%%% 
 \titleformat{\chapter}[block]{\LARGE\bfseries}{Lecture~\arabic{chapter}.}{1em}{}[]
 %%%% ============================================ %%%%
+
+%%% Set up exercise-solution format %%%
+\SetupExSheets{
+  counter-format = ch.qu ,
+  counter-within = chapter
+}
+%%% =============================== %%%
 
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newtheorem*{remark}{Remark}

@@ -86,5 +86,138 @@ $$
         \rho(\bm{A}) = \max \{ \lambda \} \leq \| \bm{A} \|.
         $$
         which is exactly we want to prove.
+    }
+    
+    \item[3.3 (a)] {
+        Assume that $\bm{x} = \{x_1, \cdots, x_n \}$, then
+        $$
+        \| \bm{x}\| = \max_i \{x_i\} = \sqrt{x^2_{\max}} \leq \sqrt{x_1^2 + \cdots + x_m^2 } = \| \bm{x} \|_2
+        $$
+    }
+
+    \item[3.3 (b)] {
+        $$
+        \| \bm{x}\|_2 = \sqrt{x_1^2 + \cdots + x_m^2} \leq \sqrt{x^2_{\max} + \cdots + x_{\max}^2} = \sqrt{m} \| \bm{x} \|_{\infty}.
+        $$
+    }
+
+    \item[3.3 (c)] {
+        $$
+        \begin{aligned}
+        \|\bm{A}\|_{\infty} & = \sup \frac{\| \bm{Ax} \|_{\infty}}{\|\bm{x}\|_{\infty}} \\
+        & \leq \sup \frac{\| \bm{Ax} \|_{2}}{\|\bm{x}\|_{\infty}} \\
+        & \leq \sup \frac{\| \bm{Ax} \|_{2}}{\|\bm{x}\|_{2}/\sqrt{n}} \\
+        & = \sqrt{n} \| \bm{A} \|_2
+        \end{aligned}
+        $$
+    }
+
+    \item[3.4] {
+        We can divide the procedure into 2 steps. Firstly, we get the certain rows: W.L.O.G., assume that we need
+        the first $m$ rows of matrix $\bm{A}$, that is
+        $$
+        \begin{bmatrix}
+            \bm{e}^T_1 \\
+            \bm{e}^T_2 \\
+            \vdots \\
+            \bm{e}^T_m
+        \end{bmatrix} \bm{A} = \bm{P},
+        $$
+        where $\bm{e}_i$ is the unit vector whose i-th entry is $1$, and $\bm{B}$ is the submatrix contains the first $m$ rows of $\bm{A}$. Then
+        we get the certain columns from $\bm{B}$. W.L.O.G. , assume that we need the first $n$ columns of matrix $\bm{A}$, that is  
+        $$
+        \bm{P} [\bm{e}_1, \bm{e}_2 ,\cdots, \bm{e}_n ] = \bm{B},
+        $$
+        Hence,
+        $$
+        \bm{B} = \begin{bmatrix}
+            \bm{e}^T_1 \\
+            \bm{e}^T_2 \\
+            \vdots \\
+            \bm{e}^T_m
+        \end{bmatrix} A [\bm{e}_1, \bm{e}_2 ,\cdots, \bm{e}_n ].
+        $$
+        Denote $ [\bm{e}^T_1, \bm{e}^T_2 ,\cdots, \bm{e}^T_m ]^{T} $ by $\bm{E}$, $[\bm{e}_1, \bm{e}_2 ,\cdots, \bm{e}_n ]$ by $\bm{F}$. Then we have that
+        $$
+        \| \bm{B}\| \leq \|\bm{EAF} \| \leq \| \bm{E} \| \| \bm{A} \| \| \bm{F} \|.
+        $$
+        It is clear that $\| \bm{E}\| = \| \bm{F} \| = 1$, then we can get that
+        $$
+        \| \bm{B} \| \leq \| \bm{A} \|.
+        $$
+
+        \begin{remark}
+            We give another (non-rigorous enough for $p$ is odd mumber) proof here, assume that 
+            $$
+            \bm{A} = \begin{bmatrix}
+                \bm{B} & \bm{T} \\
+                \bm{Y} & \bm{Z}
+            \end{bmatrix}
+            $$
+            then we can get that 
+            $$
+            \begin{aligned}
+           \| \bm{B} \|_p = \sup_{\| \bm{x} \|_p = 1} \| \bm{Bx} \|_p & \leq \sup_{\| \bm{x} \|_p = 1} \begin{bmatrix}
+            \bm{B} \\ \bm{Y}
+           \end{bmatrix} \bm{x} \|_p \\ 
+           & = \sup_{\| \bm{x} \| = 1} \| \bm{A} \begin{bmatrix}
+            \bm{x} \\ \bm{0}
+           \end{bmatrix}\|_p & \leq \sup_{\| \bm{u}\|_p = 1} \| \bm{Au}\|_{p} = \| \bm{A} \|_p.
+            \end{aligned}
+            $$
+        \end{remark}
     }   
+    \item[3.5] {
+        Since
+        $$
+       \| \bm{u} \bm{v}^{\star}\|_F = tr (\bm{v} \bm{u}^{\star} \bm{u} \bm{v}^{\star}) = \| u\|_2 tr(\bm{v} \bm{v}^{\star}) = \| \bm{u}\|_2 \| \bm{v} \|_F.
+        $$
+        we can get that $\| \bm{u} \bm{v}^{\star}\|_F = \| \bm{u}\|_F \| \bm{v} \|_F$ is not true.
+    }
+
+    \item[3.6(a)] {
+    We can prove by verifying these properties:
+        \begin{enumerate}
+            \item[(i)] $ \|\bm{x}\|^{\prime} = 0 \Leftrightarrow | \bm{y}^{\star} \bm{x} | = 0 ( \forall \| \bm{y} \| = 1) \Leftrightarrow \bm{x} = \bm{0}$.
+            \item[(ii)] $ \| \alpha \bm{x} \|^{\prime} = \sup_{\| \bm{y} \| = 1} | \bm{y}^{\star} \alpha \bm{x} | = |\alpha| \sup_{\| \bm{y} \|  = 1}  |\bm{y}^{\star}  \bm{x} |  = |\alpha| \| \bm{x}\|^{\prime}$.
+            \item[(iii)] {
+                $$
+                \begin{aligned}
+                    \| \bm{x + z}\|^{\prime} & = \sup_{\| \bm{y} \| = 1} | \bm{y}^{\star} \bm{x} + \bm{y}^{\star} \bm{z}| \\ 
+                                            & \leq \sup_{\| \bm{y} \| = 1} ( |\bm{y}^{\star} \bm{x} | + | \bm{y}^{\star} \bm{z} |) \\
+                                            & \leq \sup_{\| \bm{y}_1 \| = 1} | \bm{y}_1^\star \bm{x} | + \sup_{\| \bm{y}_2\| = 1} \sup | \bm{y}_2^{\star} \bm{z} | \\
+                                            & = \| \bm{x}\|^{\prime} + \| \bm{z}\|^\prime.
+                \end{aligned}
+                $$
+            }
+        \end{enumerate}
+        then we can get that $\| \cdot \|^\prime$ is a norm.
+    }
+
+    \item[3.6(b)] {
+        Assume that $\bm{B} = \bm{y} \bm{z}^{\star}$ such that
+        $$
+        \begin{cases}
+            \bm{Bx} = \bm{y} \\
+            \| \bm{B}\| = 1.
+        \end{cases}
+        $$
+        which is equivalent to $\exists \bm{z} \in \mathbb{C}^m$ such that
+        $$
+        \begin{cases}
+            \bm{z}^{\star} \bm{x} = 1 \\
+            \| \bm{z}\|^{\prime} = 1.
+        \end{cases}
+        $$
+        by lemma, we can get that $\exists \bm{u} \in \mathbb{C}^{m}$ such that
+        $$
+        | \bm{u}^\star \bm{x} | = \| \bm{u} \|^\prime \| \bm{x} \| = \| \bm{u} \|^{\prime},
+        $$
+        let $\alpha =  \bm{u}^\star \bm{x}$, we can denote $\bm{z}$ by $\bm{z} = (1/\alpha) \bm{u}$, then
+        \begin{itemize}
+            \item $ \| \bm{z} \|^{\prime} = \| \frac{1}{\alpha} \bm{u}\|^{\prime} = \frac{1}{|\alpha|} \| \bm{u} \|^{\prime} = 1, ~ \checkmark$
+            \item $ \bm{z}^{\star} \bm{x} = \frac{1}{\alpha} \bm{u}^\star \bm{x} = 1, ~\checkmark$
+        \end{itemize}
+        Hence, $\bm{z}$ is exactly what we need.
+    }
 \end{enumerate}
