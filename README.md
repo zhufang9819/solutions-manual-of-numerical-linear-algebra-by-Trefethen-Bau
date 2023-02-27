@@ -3,7 +3,7 @@
 ### Email: zhufang147@gmail.com
 
 ### Note
-Any 
+Don't hesitate to contact me if you have any questions regarding this solution manual.
 
 ### Contents
 
