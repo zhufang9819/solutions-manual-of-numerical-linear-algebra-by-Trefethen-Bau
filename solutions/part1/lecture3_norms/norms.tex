@@ -1,3 +1,48 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{exsheets}
+
+%% Font Policy
+% vector, \bm{}
+% matrix, \bm{}
+% space, \mathbb{}
+
+%%%% Define "Lecture" (from redefining "Chapter") %%%% 
+% \titleformat{\chapter}[block]{\LARGE\bfseries}{Lecture~\arabic{chapter}.}{1em}{}[]
+%%%% ============================================ %%%%
+
+%%% Set up exercise-solution format %%%
+%\SetupExSheets{
+	%	counter-format = ch.qu ,
+	%	counter-within = chapter
+	%}
+%%% =============================== %%%
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newtheorem*{remark}{Remark}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{property}{Property}[section]
+
+\author{Fang Zhu}
+\title{Lecture 3 Norms}
+
+\begin{document}
+	\maketitle
+	
 \section{Prerequisite}
 \begin{definition}[Vector Norm]
     A \textit{norm} is a function $\| \cdot \|: \mathbb{C}^{m} \to \mathbb{R}$ that assigns a real-valued length to each vector. In order to conform to a reasonable notion of length, a norm must 
@@ -51,9 +96,8 @@ $$
 
 
 \section{Solutions}
-\begin{enumerate}
-    \item[3.1] {
-    By equation (3.3), we can get that
+  \subsection{Exercise 3.1} 
+    By the definition of \textit{weighted p-norms}, we can get that
     $$
          \| \bm{x} \|_{\bm{W}} = \|\bm{Wx} \|,
     $$
@@ -61,10 +105,9 @@ $$
     \begin{equation*}
     \bm{Wx} = \bm{0}.  \tag{$\star$}
     \end{equation*}
-    }
-    Since $\bm{W}$ is non-singular, $(\star)$ is true iif. $\bm{x} = \bm{0}$. Then $\| x\|_{\bm{W}} = \|\bm{Wx} \| \geq 0$, and $\| \bm{x} \|= 0 $ iif. $\| \bm{x} \| = 0$, which meets condition (1) of vector norm's definition. Hence, we can conclude that $\| \cdot \|_{\bm{W}}$ is a vector norm.
+    Since $\bm{W}$ is non-singular, $(\star)$ is true iif $\bm{x} = \bm{0}$. Then $\| x\|_{\bm{W}} = \|\bm{Wx} \| \geq 0$, and $ = \|\bm{Wx} \| \geq 0$, and $\| \bm{x} \|= 0 $ iif $\bm{x} = 0 $, which meets condition (1) of vector norm's definition. Hence, we can conclude that $\| \cdot \|_{\bm{W}}$ is a vector norm.
 
-    \item[3.2] {
+    \subsection{Exercise 3.2} 
         Let $\lambda$ be the eigenvalue of $\bm{A}$ and $\bm{x}$ be the eigenvector w.r.t. $\lambda$, then
         \begin{equation*}
         \bm{A} x = \lambda x, \tag{$\star$}
@@ -77,7 +120,7 @@ $$
         \begin{equation*}
             \bm{A} (x, x, \cdots, x)= \bm{A} \bm{X}=\lambda \bm{X}, \tag{$\spadesuit$}
         \end{equation*}
-        Implement the norm on both sides of $(\spadesuit)$, then
+        implement the norm on both sides of $(\spadesuit)$, then
         $$
         \| \lambda \bm{X} \| = | \lambda | \| \bm{X} \| = \| \bm{AX} \| \leq \| \bm{A} \| \|\bm{X} \|,
         $$
@@ -86,33 +129,29 @@ $$
         \rho(\bm{A}) = \max \{ \lambda \} \leq \| \bm{A} \|.
         $$
         which is exactly we want to prove.
-    }
-    
-    \item[3.3 (a)] {
+
+    \subsection{Exercise 3.3(a)} 
         Assume that $\bm{x} = \{x_1, \cdots, x_n \}$, then
         $$
-        \| \bm{x}\| = \max_i \{x_i\} = \sqrt{x^2_{\max}} \leq \sqrt{x_1^2 + \cdots + x_m^2 } = \| \bm{x} \|_2
+        \| \bm{x}\| = \max_i \{x_i\} = \sqrt{x^2_{\max}} \leq \sqrt{x_1^2 + \cdots + x_m^2 } = \| \bm{x} \|_2.
         $$
-    }
+    
 
-    \item[3.3 (b)] {
+    \subsection{Exercise 3.3(b)} 
         $$
         \| \bm{x}\|_2 = \sqrt{x_1^2 + \cdots + x_m^2} \leq \sqrt{x^2_{\max} + \cdots + x_{\max}^2} = \sqrt{m} \| \bm{x} \|_{\infty}.
         $$
-    }
+    
 
-    \item[3.3 (c)] {
+    \subsection{Exercise 3.3(c)} 
         $$
-        \begin{aligned}
-        \|\bm{A}\|_{\infty} & = \sup \frac{\| \bm{Ax} \|_{\infty}}{\|\bm{x}\|_{\infty}} \\
-        & \leq \sup \frac{\| \bm{Ax} \|_{2}}{\|\bm{x}\|_{\infty}} \\
-        & \leq \sup \frac{\| \bm{Ax} \|_{2}}{\|\bm{x}\|_{2}/\sqrt{n}} \\
-        & = \sqrt{n} \| \bm{A} \|_2
-        \end{aligned}
+        \|\bm{A}\|_{\infty}  = \sup \frac{\| \bm{Ax} \|_{\infty}}{\|\bm{x}\|_{\infty}}
+    	\leq \sup \frac{\| \bm{Ax} \|_{2}}{\|\bm{x}\|_{\infty}} 
+        \leq \sup \frac{\| \bm{Ax} \|_{2}}{\|\bm{x}\|_{2}/\sqrt{n}}
+        = \sqrt{n} \| \bm{A} \|_2.
         $$
-    }
 
-    \item[3.4] {
+\subsection{Exercise 3.4} 
         We can divide the procedure into 2 steps. Firstly, we get the certain rows: W.L.O.G., assume that we need
         the first $m$ rows of matrix $\bm{A}$, that is
         $$
@@ -165,17 +204,16 @@ $$
            \end{bmatrix}\|_p & \leq \sup_{\| \bm{u}\|_p = 1} \| \bm{Au}\|_{p} = \| \bm{A} \|_p.
             \end{aligned}
             $$
-        \end{remark}
-    }   
-    \item[3.5] {
+        \end{remark}  
+
+\subsection{Exercise 3.5} 
         Since
         $$
        \| \bm{u} \bm{v}^{\star}\|_F = tr (\bm{v} \bm{u}^{\star} \bm{u} \bm{v}^{\star}) = \| u\|_2 tr(\bm{v} \bm{v}^{\star}) = \| \bm{u}\|_2 \| \bm{v} \|_F.
         $$
         we can get that $\| \bm{u} \bm{v}^{\star}\|_F = \| \bm{u}\|_F \| \bm{v} \|_F$ is not true.
-    }
 
-    \item[3.6(a)] {
+\subsection{Exercise 3.6(a)} 
     We can prove by verifying these properties:
         \begin{enumerate}
             \item[(i)] $ \|\bm{x}\|^{\prime} = 0 \Leftrightarrow | \bm{y}^{\star} \bm{x} | = 0 ( \forall \| \bm{y} \| = 1) \Leftrightarrow \bm{x} = \bm{0}$.
@@ -192,9 +230,9 @@ $$
             }
         \end{enumerate}
         then we can get that $\| \cdot \|^\prime$ is a norm.
-    }
 
-    \item[3.6(b)] {
+
+\subsection{Exercise 3.6(b)} 
         Assume that $\bm{B} = \bm{y} \bm{z}^{\star}$ such that
         $$
         \begin{cases}
@@ -219,5 +257,5 @@ $$
             \item $ \bm{z}^{\star} \bm{x} = \frac{1}{\alpha} \bm{u}^\star \bm{x} = 1, ~\checkmark$
         \end{itemize}
         Hence, $\bm{z}$ is exactly what we need.
-    }
-\end{enumerate}
+
+\end{document}

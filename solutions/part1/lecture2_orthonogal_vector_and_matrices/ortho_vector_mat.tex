@@ -1,3 +1,48 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{exsheets}
+
+%% Font Policy
+% vector, \bm{}
+% matrix, \bm{}
+% space, \mathbb{}
+
+%%%% Define "Lecture" (from redefining "Chapter") %%%% 
+% \titleformat{\chapter}[block]{\LARGE\bfseries}{Lecture~\arabic{chapter}.}{1em}{}[]
+%%%% ============================================ %%%%
+
+%%% Set up exercise-solution format %%%
+%\SetupExSheets{
+	%	counter-format = ch.qu ,
+	%	counter-within = chapter
+	%}
+%%% =============================== %%%
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newtheorem*{remark}{Remark}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{property}{Property}[section]
+
+\author{Fang Zhu}
+\title{Lecture 2 Orthogonal Vectors and Matrices}
+
+\begin{document}
+\maketitle
+
 \section{Prerequisite}
     Before giving the solutions, I would like to prove some basic conclusions about this lecture
     \begin{lemma}
@@ -60,8 +105,7 @@
     \end{lemma}
 
 \section{Solutions}
-\begin{enumerate}
-    \item [2.1] {
+\subsection{Exercise 2.1}
     \begin{proof}
         Without loss of generality, we assume that $\bm{A}$ is upper-triangular. By the \textit{ex. 1.3}, we can conclude that $\bm{A}^{-1}$ is also upper-triangular. It is clear that $\bm{A}^{*} = \bm{A}^{-1}$ since $\bm{A}$ is unitary. Then $\bm{A}^{\star}$ is also an upper-triangular matrix, which is
         $$
@@ -69,10 +113,9 @@
         $$
         Hence, the matrix $\bm{A}$ is diagonal. The same follows if $\bm{A}$ is lower-triangular.
     \end{proof}
-    }
 
 	
-    \item[2.3~(a)] {
+\subsection{Exercise 2.3(a)}
     Let $\bm{x}$ be an eigenvector of matrix $\bm{A}$ w.r.t. the eigenvalue $\lambda$, then
     \[\bm{A}\bm{x} = \lambda \bm{x},\]
     multiplying both sides by $\bm{x}^{\star}$, we get that
@@ -83,9 +126,9 @@
     $$
     \lambda = \frac{\bm{x}^{\star} \bm{A} \bm{x} }{ \| \bm{x} \|^{2}} = \frac{\bm{x}^{\star} \bm{A}^{\star} \bm{x} }{ \| \bm{x} \|^{2}} = \frac{(\bm{x}^{\star} \bm{A} \bm{x} )^{\star}}{ \| \bm{x} \|^{2}} = \bar{\lambda},
     $$
-    which means that $\lambda$ is real. }
+    which means that $\lambda$ is real. 
     
-    \item[2.3~(b)] {
+\subsection{Exercise 2.3(b)}
     Let $\bm{x}_1, \bm{x}_2$ be  two eigenvectors of the hermitian matrix $\bm{A}$. Denote $\lambda_k $ the eigenvalue w.r.t $\bm{x}_k (k=1,2)$, where $\lambda_1 \neq \lambda_2 $, then
     $$
     \begin{aligned}
@@ -102,9 +145,8 @@
     (\lambda_2 - \lambda_1^{\star}) \bm{x}_1^{\star} \bm{x}_2 = 0 \Rightarrow \bm{x}_1^{\star} \bm{x}_2 = 0,
     $$
     which is exactly what we need to prove.
-    }
     
-    \item[2.4] {
+\subsection{Exercise 2.4}
     Let $\lambda$ be an eigenvalue of $\bm{A}$, and $\bm{x}$ be the eigenvector w.r.t $\lambda$, then we have $\bm{Ax} = \lambda \bm{x}$ and $\| \bm{Ax} \|_2^2 = \| \lambda \bm{x} \|$, which is
     $$
     \bm{x}^{\star} \bm{A}^{\star} \bm{Ax} = \bm{x}^{\star} \| \lambda^\star \lambda \| \bm{x}. 
@@ -118,9 +160,8 @@
     x_1^2 + x_2^2 + \cdots + x_n^2 = \| \lambda \|_2^2(x_1^2 + x_2^2 + \cdots + x_n^2),
     $$
     it follows that $\| \lambda \|_2^2 = 1$ since $\bm{x}$ is non-zero vector.
-    }
     
-    \item[2.5(a)] {
+\subsection{Exercise 2.5(a)}
      Let $\bm{x}$ be an eigenvector of matrix $\bm{S}$ w.r.t. the eigenvalue $\lambda$, then 
      \[\bm{S}\bm{x} = \lambda \bm{x}.\]
      By the equation $ex.~2.3(\spadesuit)$, we have
@@ -128,17 +169,15 @@
     \lambda = \frac{\bm{x}^{\star} \bm{S} \bm{x} }{ \| \bm{x} \|^{2}} = \frac{\bm{x}^{\star} (-\bm{S}^{\star}) \bm{x} }{ \| \bm{x} \|^{2}} = \frac{-(\bm{x}^{\star} \bm{S} \bm{x} )^{\star}}{ \| \bm{x} \|^{2}} = -\bar{\lambda},
     $$
     then we can get that $\lambda + \bar{\lambda} = 0$, which means that $\lambda$ is purely imaginary.
-    }
     
-    \item[2.5(b)] {
+\subsection{Exercise 2.5(b)}
     Assume that $\lambda$ is the eigenvalue of $\bm{S}$, it follows that $1- \lambda$ is the eigenvalue of $1 - \bm{S}$. Since $\lambda$ is purely imagnary number, then by \textit{Lemma 2.1.4}, we have
     $$
     \det{(1-\bm{S})}  = \prod_{i=1}^{n} (1 - \lambda_i) \neq 0,
     $$
     where $\lambda_i, i \in \{1, 2, \cdots, n\}$ are eigenvalues of $\bm{S}$. Hence we can conclude that $1-\bm{S}$ is non-singular. 
-    }
     
-    \item[2.5(c)] {
+\subsection{Exercise 2.5(c)}
         Assume that $\bm{Q} = (\bm{I} - \bm{S})^{-1}(\bm{I} + \bm{S})$, then we have
         $$
         \begin{aligned}
@@ -155,9 +194,8 @@
         \end{aligned} 
         $$
         Hence, we can conclude that $(1-\bm{S})^{-1}(1-\bm{S})$ is unitary.
-    }
     
-    \item[2.6] {
+\subsection{Exercise 2.6}
     \begin{proof}
         If $\bm{A}$ is singular, there exists a vector $\bm{x} \in \mathbb{C}\setminus \{0\}$ such that
         $$
@@ -181,12 +219,10 @@
         $$
         the linear subspace spanned by $\bm{u}$.
     \end{proof}
-    }
     
-    \item[2.7] {
+\subsection{Exercise 2.7}
     \begin{proof}
     We can verify that $\bm{H}_{k+1}$ is Hadamard matrix directly,
-    
     $$
     \begin{aligned}
     \bm{H}_{k+1}^{T} \bm{H}_{k+1} & = \left(\begin{array}{cc}
@@ -205,13 +241,12 @@
          \bm{0}& 2\bm{H}_{k}^T \bm{H}_k 
     \end{array} \right) \\
     &= \left( \begin{array}{cc}
-         2\bm{I}_k & \bm{0} \\
-         \bm{0}& 2\bm{I}_k 
+         2c\bm{I}_k & \bm{0} \\
+         \bm{0}& 2c\bm{I}_k 
     \end{array} \right) \\
     &= 2c \cdot \bm{I}_{2k}.
     \end{aligned}
     $$
     Then we can get that $\bm{H}_{k+1}^{T} = 2c \bm{H}_{k+1}^{-1}$. Note that the entries of $\bm{H}_{k+1}$ are also all $\pm 1$ by the recursion formula. Hence $\bm{H}_{k+1}$ is also a Hadamard matrix.
     \end{proof}
-    }
-\end{enumerate}
+\end{document}

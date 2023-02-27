@@ -1,0 +1,173 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+\usepackage[colorlinks, linkcolor=blue]{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{exsheets}
+
+%% Font Policy
+% vector, \bm{}
+% matrix, \bm{}
+% space, \mathbb{}
+
+%%%% Define "Lecture" (from redefining "Chapter") %%%% 
+% \titleformat{\chapter}[block]{\LARGE\bfseries}{Lecture~\arabic{chapter}.}{1em}{}[]
+%%%% ============================================ %%%%
+
+%%% Set up exercise-solution format %%%
+%\SetupExSheets{
+	%	counter-format = ch.qu ,
+	%	counter-within = chapter
+	%}
+%%% =============================== %%%
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newtheorem*{remark}{Remark}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{property}{Property}[section]
+
+\author{Fang Zhu}
+\title{Lecture 4 The Singular Value Decomposition}
+
+\begin{document}
+	\maketitle
+	
+\section{Prerequisite}
+\begin{lemma}
+	Given summetrix matrix $\bm{A}$, then the eigenvalues of $\bm{A}$ are real.
+\end{lemma}
+
+\begin{theorem}\label{thm:schur-dec-sym-real}
+	Given symmetric matrix $\bm{A}$, then $\bm{A}$ can be factored as
+	$$
+		\bm{A} = \bm{Q} \bm{\Lambda} \bm{Q}^{\star},
+	$$
+	where
+	\begin{itemize}
+		\item $\bm{Q}$ is unitary; 
+		\item $\Lambda$ is diagonal, with the eigenvalues of $\bm{A}$ on its dagonal.
+	\end{itemize}
+\end{theorem}
+\begin{proof}
+	By induction of the dimension of $\bm{A}$.
+\end{proof}
+
+\section{Solutions}
+\subsection{Exercise 4.1(e)}
+First we compute the singular values $\sigma_i$ by finding the eigenvalues of $\bm{A}^\star\bm{A}$:
+$$
+\bm{A}^\star\bm{A} = \begin{pmatrix}
+	2 & 2\\
+	2 & 2
+\end{pmatrix},
+$$
+the characteristic polynomial of $\bm{A}^\star \bm{A}$ is
+$$
+\mathrm{det} (\bm{A}^\star\bm{A} - \lambda \bm{I}) = \lambda(\lambda-4) = 0,
+$$
+so the singular values are $\sigma_1 = 0, \sigma_2 = 2$.
+For $\lambda = 4$, we have
+$$
+\bm{A}^\star \bm{A} - 4\bm{I}= \begin{pmatrix}
+	-2 & 2\\
+	2 & -2
+\end{pmatrix},
+$$
+a unit vector in the kernel of the matrix is $\bm{v}_2 = \left(1/\sqrt{2}, 1/\sqrt{2}\right)^T$. For $\lambda = 0$, we have
+$$
+\bm{A}^\star \bm{A} - 0\bm{I}= \begin{pmatrix}
+	2 & 2\\
+	2 & 2
+\end{pmatrix},
+$$
+a unit vector in the kernel of the matrix is $\bm{v}_2 = \left(-1/\sqrt{2}, 1/\sqrt{2}\right)^T$. So at this point we know that
+$$
+\bm{A} = \bm{U\Sigma} \bm{V}^{\star} = \left(\bm{u}_1, \bm{u}_2\right)\begin{pmatrix}
+	2 & 0\\
+	0 & 0
+\end{pmatrix}\begin{pmatrix}
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}\\
+-\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+\end{pmatrix}.
+$$
+Finally we can compute $\bm{u}_1$ by the formula $\sigma_i \bm{u}_i = \bm{A} \bm{v}_i$, this gives $\bm{u}_i = \left(\sqrt{2}/2, \sqrt{2}/2\right)$, then by $\bm{u}_2^\star \bm{u}_1 = 0$ and$\| \bm{u}_2\|_2 = 1$ we can get a $\bm{u}_2 = \left(-\sqrt{2}/2, \sqrt{2}/2\right)$. So in this full glory the SVD is
+$$
+\bm{A} = \bm{U\Sigma} \bm{V}^{\star} = \begin{pmatrix}
+	\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2}\\
+	\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}
+\end{pmatrix}\begin{pmatrix}
+	2 & 0\\
+	0 & 0
+\end{pmatrix}\begin{pmatrix}
+	\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}\\
+	\frac{-1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+\end{pmatrix} = \bm{U\Sigma V}^{\star}.
+$$
+
+\subsection{Exercise 4.2}
+Assume that
+$$
+\bm{A} = \begin{pmatrix}
+	a_{11} & a_{12} & \cdots a_{1n} \\
+	a_{21} & a_{22} & \cdots a_{2n} \\
+	\vdots & \vdots & \ddots \vdots \\
+	a_{m1} & a_{m2} & \cdots a_{mn}
+\end{pmatrix} = \begin{pmatrix}
+	\bm{\alpha}_1^T \\
+	\bm{\alpha}_1^T\\ 
+	\vdots \\
+	\bm{\alpha}_m^T\end{pmatrix}
+$$
+then we can get that matrix $\bm{B}$
+$$
+\bm{B} = \begin{pmatrix}
+	a_{m1} & \cdots & a_{21} & a_{1n} \\
+	a_{m2} & \cdots & a_{22} & a_{12}\\
+	\vdots & \vdots & \ddots \vdots \\
+	a_{mn} & \cdots & a_{2n} & a_{1n}
+\end{pmatrix} = \left(\bm{\alpha}_m, \cdots, \bm{\alpha}_2, \bm{\alpha}_1 \right)
+$$
+that is 
+$$
+\bm{B} = \bm{A}^T \begin{pmatrix}
+	0 & 0 & \cdots 1 \\
+	\vdots & \vdots & \ddots \vdots \\
+	0 & 1 & \cdots 0 \\
+	1 & 0 & \cdots 0
+\end{pmatrix} = \bm{A}^T \bm{P}
+$$
+it is clear that $\bm{P}$ is a othogonomal matrix since $\bm{P}\bm{P}^T = \bm{P}^T \bm{P} = \bm{I}_m$, then
+$$
+\bm{B} \bm{B}^T = \bm{A}^T \bm{P} \bm{P}^T \bm{A} = \bm{A}^T \bm{A},
+$$
+which means that $\bm{B}$ and $\bm{A}$ have that same sigular values.
+
+\subsection{Exercise 4.3}
+See \href{./exercise_4_3.m}{matlab code}.
+
+\subsection{Exercise 4.4}
+If $\bm{A}, \bm{B}$ are unitary quivalent, we can get that $\bm{A}, \bm{B}$ have the same singular values
+by the same argument in 4.2. It is clear that $\bm{I}, -\bm{I}$ have the same singular values, but $\bm{I}$ and $-\bm{I}$ can't be unitary equivalent since $\bm{I} \neq \bm{Q} \left( - \bm
+I\right) \bm{Q}^\star = -\bm{I}$.
+
+\subsection{Exercise 4.5}
+If $\bm{A}$ is a real matrix, then by \autoref{thm:schur-dec-sym-real}, $\bm{A^\star A}$ is a real symmetric matrix and $\bm{A^\star A}$ has a real eigen decomposition
+$$
+\bm{A}^\star \bm{A} = \bm{V} \bm{\Lambda} \bm{V}^{\star}
+$$
+where $\Lambda$ is a diagonal matrix with its entries are eigenvalues of $\bm{A^\star A}$, then we can get $\bm{U}$ by $\bm{A} \bm{v}_i = \sigma_i \bm{u}_i$, we get the real SVD of $\bm{A}$:
+$$
+\bm{A} = \bm{U} \bm{\Sigma} \bm{V}^\star.
+$$
+\end{document}

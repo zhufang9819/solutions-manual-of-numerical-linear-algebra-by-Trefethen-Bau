@@ -1,4 +1,6 @@
 make.exe --dry-run --always-make --keep-going --print-directory
-'make.exe' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
-���������ļ���
+make.exe: Entering directory 'd:/Github/nla'
+make.exe: Leaving directory 'd:/Github/nla'
+ 
+make.exe: *** No targets specified and no makefile found.  Stop.
 
