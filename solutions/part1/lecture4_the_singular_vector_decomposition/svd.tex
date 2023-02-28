@@ -4,6 +4,7 @@
 \usepackage{amsthm}
 \usepackage{bm}
 \usepackage{amsfonts}
+\usepackage{matlab-prettifier}
 \usepackage{titlesec}
 \usepackage[colorlinks, linkcolor=blue]{hyperref}
 \usepackage{color}
@@ -154,20 +155,69 @@ $$
 which means that $\bm{B}$ and $\bm{A}$ have that same sigular values.
 
 \subsection{Exercise 4.3}
-See \href{./exercise_4_3.m}{matlab code}.
+\begin{lstlisting}[
+frame=single,
+numbers=left,
+style=Matlab-Pyglike]
+clc; clear;
+
+A = [1 2; 0 2];
+
+[U,S,V] = svd(A);
+
+[m, n] = size(A); % U:m*m, V:n*n
+
+ss = diag(S);
+
+v_end_points_xsub = V(1, :);
+v_end_points_ysub = V(2, :);
+
+u_end_points_xsub = U(1, :);
+u_end_points_ysub = U(2, :);
+
+% Plot a circle with radius = 1
+ths = linspace(0, 2*pi, 100);
+x = cos(ths);
+y = sin(ths);
+plot(x, y);
+axis equal;
+hold on;
+
+% Plot the ellipse transformed by A
+xy = [x;y];
+transformed_xy = A*xy;
+transformed_x = transformed_xy(1,:);
+transformed_y = transformed_xy(2,:);
+plot(transformed_x, transformed_y);
+hold on;
+
+
+
+% Plot the right singular vector v1, v2
+quiver(0,0,v_end_points_xsub(1),v_end_points_ysub(1), "AutoScale","off");
+hold on;
+quiver(0,0,v_end_points_xsub(2),v_end_points_ysub(2), "AutoScale","off");
+
+% Plot the left singular vector u1,u2 scaled by the singular vales
+quiver(0,0,ss(1)*u_end_points_xsub(1),ss(1)*u_end_points_ysub(1), "AutoScale","off");
+hold on;
+quiver(0,0,ss(2)*u_end_points_xsub(2),ss(2)*u_end_points_ysub(2), "AutoScale","off");
+
+
+\end{lstlisting}
 
 \subsection{Exercise 4.4}
-If $\bm{A}, \bm{B}$ are unitary quivalent, we can get that $\bm{A}, \bm{B}$ have the same singular values
-by the same argument in 4.2. It is clear that $\bm{I}, -\bm{I}$ have the same singular values, but $\bm{I}$ and $-\bm{I}$ can't be unitary equivalent since $\bm{I} \neq \bm{Q} \left( - \bm
-I\right) \bm{Q}^\star = -\bm{I}$.
+If $\bm{A}, \bm{B}$ are unitary quivalent, we can use the same argument as in Exercise 4.2 to show that they have the same singular values. It is evident that the matrices $\bm{I}$ and $-\bm{I}$ have the same singular values. However, $\bm{I}$ and $-\bm{I}$ can not be unitary equivalent because $\bm{I}$ is not equal to $\bm{Q} \left( - \bm
+I\right) \bm{Q}^\star$, where $\bm{Q}$ is unitary matrix, and thus, the latter is equal to $-\bm{I}$.
 
 \subsection{Exercise 4.5}
-If $\bm{A}$ is a real matrix, then by \autoref{thm:schur-dec-sym-real}, $\bm{A^\star A}$ is a real symmetric matrix and $\bm{A^\star A}$ has a real eigen decomposition
+By \autoref{thm:schur-dec-sym-real}, if $\bm{A}$ is a real matrix, then $\bm{A^\star A}$ is a real symmetric matrix with a real eigen decomposition:
 $$
-\bm{A}^\star \bm{A} = \bm{V} \bm{\Lambda} \bm{V}^{\star}
+\bm{A}^\star \bm{A} = \bm{V} \bm{\Lambda} \bm{V}^{\star},
 $$
-where $\Lambda$ is a diagonal matrix with its entries are eigenvalues of $\bm{A^\star A}$, then we can get $\bm{U}$ by $\bm{A} \bm{v}_i = \sigma_i \bm{u}_i$, we get the real SVD of $\bm{A}$:
+where $\bm{\Lambda}$ is a diagonal matrix whose entries are the eigenvalues of $\bm{A^\star A}$. We can obtain $\bm{U}$ by solving $\bm{A} \bm{v}_i = \sigma_i \bm{u}_i$, which gives us the real singular value decomposition(SVD) of $\bm{A}$:
 $$
-\bm{A} = \bm{U} \bm{\Sigma} \bm{V}^\star.
+\bm{A} = \bm{U} \bm{\Sigma} \bm{V}^\star,
 $$
+where $\bm{\Sigma}$ is a diagonal matrix whose entries are the singular values of $\bm{A}$. 
 \end{document}
