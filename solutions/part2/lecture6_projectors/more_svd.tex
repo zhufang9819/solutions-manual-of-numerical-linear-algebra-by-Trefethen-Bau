@@ -1,0 +1,360 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{exsheets}
+
+%% Font Policy
+% vector, \bm{}
+% matrix, \bm{}
+% space, \mathbb{}
+
+%%%% Define "Lecture" (from redefining "Chapter") %%%% 
+% \titleformat{\chapter}[block]{\LARGE\bfseries}{Lecture~\arabic{chapter}.}{1em}{}[]
+%%%% ============================================ %%%%
+
+%%% Set up exercise-solution format %%%
+%\SetupExSheets{
+	%	counter-format = ch.qu ,
+	%	counter-within = chapter
+	%}
+%%% =============================== %%%
+
+\renewcommand{\vec}[1]{\bm{#1}}
+\newtheorem*{remark}{Remark}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{property}{Property}[section]
+
+\author{Fang Zhu}
+\title{Lecture 5 More on the SVD}
+
+\begin{document}
+	\maketitle
+	
+\section{Prerequisite}
+We first give a more detailed proof of \textit{Theorem 5.2} in the book.
+\begin{theorem}
+$\mathrm{range} (\bm{A}) = <\bm{u}_1, \cdots, \bm{u}_l>$, $\mathrm{null} (\bm{A}) = <\bm{v}_{l+1}, \cdots, \bm{v}_{n}>$
+\end{theorem}
+
+\begin{proof}
+Assume that $\bm{A} = \bm{U} \bm{\Sigma} \bm{V}^{\star}$ and $\bm{A}$ has $l$'s non-zero
+singular values, then
+$$
+\begin{aligned}
+\mathrm{range} (\bm{A}) & = \{ \bm{Ax}: \bm{x} \in \mathbb{R}^{n}\} \\
+& = \{ \bm{U} \bm{\Sigma} \bm{V}^{\star}\bm{x}: \bm{x} \in \mathbb{R}^{n}\} \\
+& = \{ \bm{U} \bm{\Sigma}  \bm{y}: \bm{y} = \bm{V}^{\star}\bm{x}, \bm{x} \in \mathbb{R}^{n}\} \\
+& = \{ \bm{U} \bm{\Sigma} \bm{y}: \bm{y} \in \mathbb{R}^{n}\}.
+\end{aligned}
+$$
+Let $\bm{c}_j  = \sigma_j \bm{y}_j, (j = 1, 2, \cdots, l)$, it is clear that $\bm{c}_j$ can be any vector in $\mathbb{R}^n$ since $\bm{y}$ is an arbitrary vector in $\mathbb{R}^n$. Hence, we can conclude that
+$$
+\mathrm{range}(\bm{A}) = \{ \bm{U} \bm{c}: \bm{c} \in \mathbb{R}^n \} = <\bm{u}_1, \bm{u}_2, \cdots, \bm{u}_l>.
+$$
+Further the null space of $\bm{A}$ is as follows:
+$$
+\begin{aligned}
+    \mathrm{null}( \bm{A} )&= \{ \bm{x} \in \mathbb{R}^n: \bm{Ax} = 0\} \\
+    & = \{ \bm{x} \in \mathbb{R}^n: \bm{U} \bm{\Sigma} \bm{V}^{\star}\bm{x} = 0\} \\
+    & = \{ \bm{x} \in \mathbb{R}^n: \bm{\Sigma} \bm{V}^{\star}\bm{x} = 0\}.
+\end{aligned}
+$$
+Note that any vector $\bm{x}$ can be expressed by $\bm{x} = \sum_{j}^{n} x_i \bm{v}_j$. Substituting this expression into $\bm{\Sigma} \bm{V}^{\star}\bm{x} = 0$ gives that
+$$
+(\sigma_1 x_1, \sigma_2 x_2, \cdots, \sigma_l x_l, \sigma_{l+1} x_{l+1}, \cdots, \sigma_n x_n)^T = 0.
+$$
+Since $\sigma_j > 0$ for $1 \leq j \leq l$, it follows that $c_j = 0$ for these index values. Moreover, $\sigma_j = 0$ for $l+1 \leq j \leq n$ implies that the coefficient $c_j$ for these $j$-values are arbitrary. We can conclude that
+$$
+\mathrm{null} (\bm{A}) = \{ \bm{x} = \sum_{i=1}^l c_i \bm{v}_i, c_i \in \mathbb{R}\} = <\bm{v}_{l+1}, \bm{v}_{l+2}, \cdots, \bm{v}_n>.
+$$
+\end{proof}
+
+
+\section{Solutions}
+\subsection{Exercise 5.1}
+First we compute the singular values $\sigma_i$ by finding the eigenvalues of
+$$
+\bm{A}^{\star} \bm{A} = \begin{pmatrix}
+1 & 2 \\
+2 & 8
+\end{pmatrix}.
+$$
+The characteristic polynomial of $\bm{A}^\star \bm{A}$ is
+$$
+\mathrm{det} (\bm{A}^{\star} \bm{A} - \lambda \bm{I}) = (1- \lambda) (8- \lambda) - 4 = 8 + \lambda^2 - 9 \lambda - 4 = \lambda^2 - 9 \lambda + 4,
+$$
+so the singular values are
+$$
+\sigma_{max} = \sqrt{\frac{ 9 + \sqrt{65} }{ 2}}, \quad \sigma_{min} = \sqrt{\frac{ 9 - \sqrt{65} }{ 2}}.
+$$
+
+\subsection{Exercise 5.2}
+Give a full SVD of $\bm{A} $ as $\bm{A} = \bm{U} \bm{\Sigma} \bm{V}^{\star} $ if $\mathrm{rank}(\bm{A}) = n$, then the claim is clearly true (sequence as $\{\bm{A}_1 = \bm{A}, \bm{A}_2 = \bm{A}, \cdots, \bm{A}_n = \bm{A}, \cdots \}$. Otherwise, if $\mathrm{rank}(\bm{A})= r < n$, we can define a sequence of $\bm{A}$ as 
+$$
+\bm{A}_n = \bm{U} \begin{pmatrix}
+    \sigma_1&&&&&& \\
+    &\sigma_2&&&&& \\
+    &&\ddots&&&& \\
+    &&& \sigma_r &&&\\
+    &&&&\frac{1}{n}&& \\
+    &&&&&\ddots& \\
+    &&&&&&\frac{1}{n}
+\end{pmatrix} \bm{V}^{\star},
+$$
+then we can easily verify that 
+$$
+\lim_{n \to \infty} \| \bm{A} - \bm{A}_n \|_2 = 0.
+$$
+
+\subsection{Exercise 5.3(a)}
+First we compute the singular values $\sigma_i$ by finding the eigenvalues of
+$$
+\bm{A}^{\star} \bm{A} = \begin{pmatrix}
+104 & -72 \\
+-72 & 146
+\end{pmatrix}.
+$$
+The characteristic polynomial of $\bm{A}^\star \bm{A}$ is
+$$
+\mathrm{det} (\bm{A}^{\star} \bm{A} - \lambda \bm{I}) = (\lambda - 200) (\lambda - 50) = 0,
+$$
+so the singular values are
+$$
+\sigma_1 = \sqrt{\lambda_1} = 5 \sqrt{2}, \quad \sigma_2 = \sqrt{\lambda_2} = 10 \sqrt{2}.
+$$
+For $\lambda_1 = 200$, we have
+$$
+\bm{A}^\star \bm{A} - \lambda \bm{I} = \begin{pmatrix}
+    -96 & -72 \\
+    -72 & -54
+\end{pmatrix},
+$$
+a unit vector in the kernel of the matrix is $\bm{v}_1 = (-3/5, 4/5)^T$.
+For $\lambda_2 = 50$, we have
+$$
+\bm{A}^\star \bm{A} - \lambda \bm{I} = \begin{pmatrix}
+    54 & -72 \\
+    -72 & 96
+\end{pmatrix},
+$$
+a unit vector in the kernel of the matrix is $\bm{v}_2 = (4/5, 3/5)^T$. So at this point, we know that
+$$
+\bm{A}= (\bm{u}_1, \bm{u}_2) \begin{pmatrix}
+    -\frac{3}{5} & \frac{4}{5}\\
+    \frac{4}{5} & \frac{3}{5}
+\end{pmatrix}.
+$$
+Further we can compute $\bm{u}_1, \bm{u}_2$ by $\sigma_i \bm{u}_i = \bm{A} \bm{v}_i$, which gives that
+$$
+\bm{u}_1 = \begin{pmatrix}
+    \frac{\sqrt{2}}{2}\\
+    \frac{\sqrt{2}}{2}
+\end{pmatrix},\quad \bm{u}_2 = \begin{pmatrix}
+    \frac{\sqrt{2}}{2}\\
+    -\frac{\sqrt{2}}{2}.
+\end{pmatrix}
+$$
+So in its full glory the SVD is 
+$$
+\bm{A} = \begin{pmatrix}
+    \frac{\sqrt{2}}{2}& \frac{\sqrt{2}}{2} \\
+    \frac{\sqrt{2}}{2} &-\frac{\sqrt{2}}{2}
+\end{pmatrix} \begin{pmatrix}
+    10\sqrt{2} & 0 \\
+    0 & 5\sqrt{2}
+\end{pmatrix} \begin{pmatrix}
+    -\frac{3}{5} & \frac{4}{5} \\
+    \frac{4}{5} & \frac{3}{5}
+\end{pmatrix}.
+$$
+\subsection{Exercise 5.3(b)}
+Singular values: $$\sigma_1 = 10\sqrt{2}, \quad \sigma_2 = 5\sqrt{2}$$.
+Left singular vectors:
+$$
+\bm{u}_1 = \begin{pmatrix}
+    \frac{\sqrt{2}}{2}\\
+    \frac{\sqrt{2}}{2}
+\end{pmatrix},\quad \bm{u}_2 = \begin{pmatrix}
+    \frac{\sqrt{2}}{2}\\
+    -\frac{\sqrt{2}}{2}
+\end{pmatrix}.
+$$
+Right singular vectors:
+$$
+\bm{v}_1 = \begin{pmatrix}
+    \frac{-3}{5}\\
+    \frac{4}{5}
+\end{pmatrix},\quad \bm{v}_2 = \begin{pmatrix}
+    \frac{4}{5}\\
+    -\frac{3}{5}
+\end{pmatrix}.
+$$
+\subsection{Exercise 5.3(c)}
+We can compute the norms via the definition in \textit{Lecture 3 Norms}.
+$$
+\begin{aligned}
+    \| \bm{A} \|_1 & = \max_{1 \leq j \leq 2} \| \bm{a}_j\| = 16, \\
+    \| \bm{A} \|_2 & = \| \bm{U} \bm{\Sigma} \bm{V}^{\star}\|_2 = \| \bm{\Sigma} \|_2 = 10\sqrt{2},\\
+    \| \bm{A} \|_F &= \| \bm{\Sigma} \|_F = \sqrt{50 + 200} = 5\sqrt{10}.
+\end{aligned}
+$$
+\subsection{Exercise 5.3(d)}
+We can compute $\bm{A}^{-1}$ via SVD as follows:
+$$
+\begin{aligned}
+    \bm{A}^{-1} &= (\bm{U} \bm{\Sigma} \bm{V}^{\star})^{-1} = \bm{V} \bm{\Sigma}^{-1} \bm{U}^{\star} \\
+    &= \begin{pmatrix}
+        -\frac{3}{5} & \frac{4}{5} \\
+        \frac{4}{5} & \frac{3}{5}
+    \end{pmatrix} \begin{pmatrix}
+        \frac{1}{10\sqrt{2}} & 0 \\
+        0 & \frac{1}{5\sqrt{2}} 
+    \end{pmatrix}
+    \begin{pmatrix}
+        \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \\
+        \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2}
+    \end{pmatrix}\\
+    &= \begin{pmatrix}
+        -\frac{1}{20} & -\frac{11}{100} \\
+        \frac{1}{10} & -\frac{1}{50}
+    \end{pmatrix}.
+\end{aligned}
+$$
+\subsection{Exercise 5.3(e)}
+The characteristic polynomial of $A$ is
+$$
+\det(\bm{A} - \lambda \bm{I}) = \lambda^2 - 3\lambda + 100 = 0,
+$$
+we can get that
+$$
+\lambda_1 = \frac{3 + i\sqrt{391}}{2}, \quad \lambda_2 = \frac{3 -i\sqrt{391}}{2}.
+$$
+\subsection{Exercise 5.3(f)}
+We can verify the claim as follows:
+$$
+\begin{aligned}
+\det(\bm{A}) &= -2\times 5 + 10 \times 11 = 100 = \lambda_1 \cdot \lambda_2 \\
+|\det(\bm{A})| &= 100 = 10\sqrt{2} \times 5\sqrt{2} = \sigma_1 \cdot \sigma_2 .
+\end{aligned}
+$$
+\subsection{Exercise 5.3(g)}
+It is clear that the ellipsoid is a rotation of another ellipsoid $\mathcal{E}$ whose equation are
+$$
+\frac{x^2}{\sigma_1^2} + \frac{y^2}{\sigma_2^2} = 1
+$$
+and hence we can compute the area of $\mathcal{E}$ as the area of the original ellipsoid. We first let
+$$
+y = f(x) = \sigma_2 \sqrt{1 - \frac{x^2}{\sigma_1^2}},
+$$
+then
+$$
+\begin{aligned}
+\mathrm{Area}(\mathcal{E}) &= 4 \int_{0}^1 f(x) dx \\
+&= 4 \int_{0}^1 \sigma_2 \sqrt{1 - \frac{x^2}{\sigma_1^2}} dx \\
+&= 4 \int_{0}^{\frac{\pi}{2}} \sigma_2\sigma_1 \cos^2 \theta d\theta, \quad (x = \sigma_1 \sin \theta) \\
+& = 4 \int_{0}^{\frac{\pi}{2}} \frac{\sigma_1 \sigma_2}{2}(1+ \cos (2\theta)) d\theta \\
+& = 4 \times \frac{\sigma_1 \sigma_2\pi}{4} = \sigma_1 \sigma_2 \pi.
+\end{aligned}
+$$
+Thus the area of the original ellipsoid is $\sigma_1 \sigma_2 \pi = 100 \pi$.
+
+\subsection{Exercise 5.4}
+  
+Let $\bm{A}$ be an $m \times m$ complex matrix with singular values $\sigma_1, \sigma_2, \cdots, \sigma_m$, and let $\bm{u}_i$ and $\bm{v}_i$ be the corresponding left and right singular vectors. Then, we have $\bm{A}\bm{v}_i = \sigma_i \bm{u}_i$ and $\bm{A}^{\star} \bm{u}_i = \sigma_i^{\star}\bm{v}_i$, where $\bm{A}^\star$ is the conjugate transpose of $\bm{A}$ and $\sigma_k \in \mathbb{R}$. We define $\bm{\beta}_i = [a\bm{v}_i, b\bm{u}_i] \in \mathbb{C}^{2m}$ and consider the matrix
+$$
+\bm{B} = \begin{pmatrix}
+    \bm{0} & \bm{A}^\star \\
+\bm{A} & \bm{0}
+\end{pmatrix}
+$$
+Then, we have 
+$$
+\bm{B} \bm{\beta}_i = \begin{pmatrix}
+\bm{0} & \bm{A}^\star \\
+\bm{A} & \bm{0}
+\end{pmatrix} \begin{pmatrix}
+a  \bm{v}_i\\
+b  \bm{u}_i
+\end{pmatrix} =  \begin{pmatrix}
+b \sigma_i \bm{v}_i\\
+a \sigma_i \bm{u}_i
+\end{pmatrix}
+$$
+Next, we prove that the eigenvalues of $\bm{B}$ are $\pm\sigma_1, \pm \sigma_2, \cdots, \pm \sigma_m$.
+
+Suppose $\bm{\beta}_i$ is the eigenvector of the corresponding eigenvalue $\sigma_i$ of the matrix $\bm{B}$, then we have
+$$
+\begin{cases}
+a\bm{v}_i &= b\bm{v}_i, \\
+b \bm{u}_i &= a\bm{u}_i
+\end{cases}
+$$
+which implies that $a = b$.
+Suppose $\bm{\beta}_i$ is the eigenvector of the corresponding eigenvalue $-\sigma_i$ of the matrix $\bm{B}$, then we have
+$$
+\begin{cases}
+a\bm{v}_i &= -b\bm{v}_i, \\
+b \bm{u}_i &= -a\bm{u}_i
+\end{cases}
+$$
+which implies that $a = -b$. Let
+$$
+\bm{S} = \begin{pmatrix}
+a\bm{v}_1, &a\bm{v}_2, &\cdots, &a\bm{v}_m, &a\bm{v}_{m+1}, &a\bm{v}_{m+2}, &\cdots,&a\bm{v}_{2m} \\
+a\bm{u}_1, &a\bm{u}_2, &\cdots,&a\bm{u}_m, &-a\bm{u}_{m+1}, &-a\bm{u}_{m+2}, &\cdots, &-a\bm{u}_{2m}
+\end{pmatrix}
+$$
+as well as
+$$
+\bm{\Lambda} = 
+ \begin{pmatrix}
+   \sigma_{1} &  &  &&&&&\\ 
+   & \sigma_{2} &  & &&&&\\ 
+   &  &  \ddots & &&&&\\ 
+   &  &   & \sigma_{m} &&&&\\
+   &  &   & &-\sigma_{1} && &\\
+   &  &   & & & -\sigma_{2}&& \\
+   &  &   & & & & \ddots &\\
+   &  &   & & & & & -\sigma_{m}
+ \end{pmatrix},
+$$
+then there is
+$$
+\bm{B} \bm{S} = \bm{S} \bm{\Lambda},
+$$
+But at this time $\bm{S}$ is not necessarily invertible. Next, we make $\bm{S}$ an orthogonal matrix by taking an appropriate $a$, so that $\bm{S}$ is invertible. It is not difficult to calculate, assuming that $\bm{S}$ is orthogonal, that is, $\bm{S}^{\star} \bm{S} = \bm{S} \bm{S}^{\star} = \bm{I}$, then
+$$
+a^2 + a^2 = 1,
+$$
+We can get $a = \pm \frac{1}{\sqrt{2}}$, without loss of generality, we make $a = \frac{1}{\sqrt{2}}$, then $S $ is an orthogonal matrix, so it is invertible, then the eigendecomposition of $B$ is
+$$
+\bm{B} = \bm{S}^{-1} \bm{\Lambda} \bm{S}.
+$$
+
+
+
+
+
+\begin{remark}
+In fact, this proof is not perfect. We did not detail how to find the eigenvalue of $\bm{B}$, that is, the root of the characteristic polynomial corresponding to $\bm{B}$ has and only $\pm \sigma_i$, which needs to be improved later. If readers have any good ideas, welcome to contact me.
+\end{remark}
+
+
+
+
+
+
+\end{document}

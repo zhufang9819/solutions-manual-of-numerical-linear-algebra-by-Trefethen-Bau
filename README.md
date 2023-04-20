@@ -1,8 +1,9 @@
 # Codes and Solutions for BOOK "Numerical Linear Algebra" by Trefethen
 
-## Contact me
+## Contact
 - Author: Zhu Fang
 - Email: zhufang147@gmail.com
+
 Don't hesitate to contact me if you have any questions regarding this solution manual.
 
 ## Contents
@@ -25,5 +26,6 @@ Source 1. [Yan Zeng's solution manual](https://www.quantsummaries.com/trefethen_
 Source 2. [Desh2608's solution manual](https://github.com/desh2608/numerical-linear-algebra)
 
 Source 3. [@ForYourMath's solution video](https://youtu.be/JiePvWjCGHk)
+
 Without the insights and knowledge shared by these sources, this manual would not have been possible.
 

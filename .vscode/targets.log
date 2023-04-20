@@ -7,7 +7,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Thu Apr 20 18:34:41 2023
+# Make data base, printed on Thu Apr 20 18:38:13 2023
 
 # Variables
 
@@ -28,7 +28,8 @@ MAKEFLAGS = Rrqp
 # environment
 WEBSTORM_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\webstorm.vmoptions
 # automatic
-@D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
+@D = $ 
+(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
 HOMEDRIVE = C:
 # automatic
@@ -98,7 +99,7 @@ DATASPELL_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\dataspell.vmoptions
 # environment
 CONDA_EXE = D:\ProgramData\Miniconda3\Scripts\conda.exe
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_13100_ZNMRWYCMRVPZIHSX
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_23352_JTLUGKTDMUCBDGIY
 # environment
 COMPUTERNAME = FUNZOO
 # environment
@@ -112,7 +113,7 @@ JETBRAINS_CLIENT_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\jetbrains_client.vmo
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-WT_SESSION = 1f86e378-5dd9-4024-8aac-44df481183ce
+WT_SESSION = 9281dde5-9225-493d-9017-ad693f86c82f
 # environment
 USERNAME = zhufa
 # environment
@@ -188,11 +189,14 @@ MFLAGS = -Rrqp
 # environment
 SYSTEMROOT = C:\WINDOWS
 # environment
-RUBYMINE_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\rubymine.vmoptions
+RUBYMINE_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\rub 
+ymine.vmoptions
 # automatic
 +D = $(patsubst %/,%,$(patsubst %\,%,$(dir $+)))
 # environment
 DATAGRIP_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\datagrip.vmoptions
+# environment
+VSCODE_L10N_BUNDLE_LOCATION = 
 # automatic
 +F = $(notdir $+)
 # environment
@@ -236,13 +240,13 @@ CONDA_PREFIX = D:\ProgramData\Miniconda3
 # environment
 PROCESSOR_LEVEL = 23
 # environment
-VSCODE_PID = 13100
+VSCODE_PID = 23352
 # environment
 USERDOMAIN_ROAMINGPROFILE = FUNZOO
 # environment
 LANG = C
 # variable set hash-table stats:
-# Load=115/1024=11%, Rehash=0, Collisions=17/131=13%
+# Load=116/1024=11%, Rehash=0, Collisions=17/132=13%
 
 # Pattern-specific Variable Values
 
@@ -265,7 +269,8 @@ LANG = C
 # C:\WINDOWS\System32\OpenSSH: could not be stat'd.
 # C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1655347579): 8 files, no impossibilities.
 # D:\ProgramData\Miniconda3\Library\bin (key D:/ProgramData/Miniconda3/Library/bin, mtime 1651137143): 67 files, no impossibilities.
-# C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common (key C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common, mtime 1654404271): 10 files, no impossibilities.
+# C:\Program Files (x86)\NVIDIA  
+Corporation\PhysX\Common (key C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common, mtime 1654404271): 10 files, no impossibilities.
 # C:\Users\zhufa\AppData\Local\Programs\Julia-1.8.0\bin: could not be stat'd.
 # D:\ProgramData\Miniconda3\condabin (key D:/ProgramData/Miniconda3/condabin, mtime 1651137143): 9 files, no impossibilities.
 # D:\ProgramData\Miniconda3\Scripts (key D:/ProgramData/Miniconda3/Scripts, mtime 1666534412): 60 files, no impossibilities.
@@ -279,10 +284,7 @@ LANG = C
 # C:\Windows\System32\Wbem (key C:/Windows/System32/Wbem, mtime 1678991434): 171 files, no impossibilities.
 # D:\ProgramData\Miniconda3\bin: could not be stat'd.
 # C:\Windows\system32 (key C:/Windows/system32, mtime 1681954219): 2932 files, no impossibilities.
-# D:\Program Files\JetBrains\PyCharm 2022.3.3\bin (key D:/Program Files/JetBrains/PyCharm 2022.3.3/bin, mtime 1679128977): 27 files, no impossib 
-make.exe: *** No rule to make target 'all'.  Stop.
-
-ilities.
+# D:\Program Files\JetBrains\PyCharm 2022.3.3\bin (key D:/Program Files/JetBrains/PyCharm 2022.3.3/bin, mtime 1679128977): 27 files, no impossibilities.
 # C:\Users\zhufa\AppData\Local\Microsoft\WindowsApps (key C:/Users/zhufa/AppData/Local/Microsoft/WindowsApps, mtime 1681252313): 29 files, no impossibilities.
 # C:\Windows\System32\WindowsPowerShell\v1.0 (key C:/Windows/System32/WindowsPowerShell/v1.0, mtime 1676603085): 31 files, no impossibilities.
 
@@ -342,7 +344,10 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 8 (7) / strings = 4200 / storage = 63428 B / avg = 15 B
+# strcache buffers: 8 (7) / strings = 4200 / storage = 63428 B / avg = 
+make.exe: *** No rule to make target 'all'.  Stop.
+
+ 15 B
 # current buf: size = 8174 B / used = 6282 B / count = 462 / avg = 13 B
 # other used: total = 55254 B / count = 3738 / avg = 14 B
 # other free: total = 72 B / max = 14 B / min = 3 B / avg = 10 B
@@ -350,6 +355,6 @@ GNUmakefile:
 # strcache performance: lookups = 7646 / hit rate = 45%
 # hash-table stats:
 # Load=4200/8192=51%, Rehash=0, Collisions=2868/7646=38%
-# Finished Make data base on Thu Apr 20 18:34:41 2023
+# Finished Make data base on Thu Apr 20 18:38:13 2023
 
  
