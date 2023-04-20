@@ -7,7 +7,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Mon Feb 27 18:13:33 2023
+# Make data base, printed on Thu Apr 20 18:34:41 2023
 
 # Variables
 
@@ -19,10 +19,14 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # default
 .SHELLFLAGS := -c
+# environment
+GATEWAY_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\gateway.vmoptions
 # makefile
 MAKEFLAGS = Rrqp
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
+# environment
+WEBSTORM_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\webstorm.vmoptions
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
@@ -36,9 +40,11 @@ CURDIR := d:/Github/nla
 # default
 SHELL := sh.exe
 # environment
+APPCODE_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\appcode.vmoptions
+# environment
 WINDIR = C:\WINDOWS
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"7996dc1a6dc0dd6d225359e814b5eae0.zh-cn","_translationsConfigFile":"C:\\Users\\zhufa\\AppData\\Roaming\\Code\\clp\\7996dc1a6dc0dd6d225359e814b5eae0.zh-cn\\tcf.json","_cacheRoot":"C:\\Users\\zhufa\\AppData\\Roaming\\Code\\clp\\7996dc1a6dc0dd6d225359e814b5eae0.zh-cn","_resolvedLanguagePackCoreLocation":"C:\\Users\\zhufa\\AppData\\Roaming\\Code\\clp\\7996dc1a6dc0dd6d225359e814b5eae0.zh-cn\\441438abd1ac652551dbe4d408dfcec8a499b8bf","_corruptedFile":"C:\\Users\\zhufa\\AppData\\Roaming\\Code\\clp\\7996dc1a6dc0dd6d225359e814b5eae0.zh-cn\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"en-us","osLocale":"zh-cn","availableLanguages":{},"_languagePackSupport":true}
 # environment
 ONEDRIVE = C:\Users\zhufa\OneDrive
 # environment
@@ -54,9 +60,13 @@ PROGRAMW6432 = C:\Program Files
 # environment
 PROGRAMDATA = C:\ProgramData
 # environment
+WEBIDE_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\webide.vmoptions
+# environment
 VSCODE_CWD = D:\Github\nla
 # environment
-PATH = D:\ProgramData\Miniconda3;D:\ProgramData\Miniconda3\Library\mingw-w64\bin;D:\ProgramData\Miniconda3\Library\usr\bin;D:\ProgramData\Miniconda3\Library\bin;D:\ProgramData\Miniconda3\Scripts;D:\ProgramData\Miniconda3\bin;D:\ProgramData\Miniconda3\condabin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\ProgramData\Miniconda3;D:\ProgramData\Miniconda3\Lib\bin;D:\ProgramData\Miniconda3\Scripts;C:\Program Files\Git\cmd;C:\Program Files\Wolfram Research\WolframScript;C:\MinGW\bin;D:\Program Files\MATLAB\R2022a\runtime\win64;D:\Program Files\MATLAB\R2022a\bin;C:\Users\zhufa\AppData\Local\Programs\Julia-1.8.0\bin;.;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0;%SYSTEMROOT%\System32\OpenSSH;C:\Users\zhufa\AppData\Local\Microsoft\WindowsApps;D:\texlive\2022\bin\win32;C:\Users\zhufa\AppData\Local\Programs\Microsoft VS Code\bin;D:\Program Files\Julia-1.8.3\bin
+PATH = D:\ProgramData\Miniconda3;D:\ProgramData\Miniconda3\Library\mingw-w64\bin;D:\ProgramData\Miniconda3\Library\usr\bin;D:\ProgramData\Miniconda3\Library\bin;D:\ProgramData\Miniconda3\Scripts;D:\ProgramData\Miniconda3\bin;D:\ProgramData\Miniconda3\condabin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\ProgramData\Miniconda3;D:\ProgramData\Miniconda3\Lib\bin;D:\ProgramData\Miniconda3\Scripts;C:\Program Files\Git\cmd;C:\Program Files\Wolfram Research\WolframScript;C:\MinGW\bin;D:\Program Files\MATLAB\R2022a\runtime\win64;D:\Program Files\MATLAB\R2022a\bin;C:\Users\zhufa\AppData\Local\Programs\Julia-1.8.0\bin;.;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Calibre2;C:\Users\zhufa\AppData\Local\Microsoft\WindowsApps;D:\texlive\2022\bin\win32;C:\Users\zhufa\AppData\Local\Programs\Microsoft VS Code\bin;D:\Program Files\Julia-1.8.3\bin;D:\Program Files\JetBrains\PyCharm 2022.3.3\bin
+# environment
+PHPSTORM_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\phpstorm.vmoptions
 # environment
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # environment
@@ -68,29 +78,41 @@ USERPROFILE = C:\Users\zhufa
 # environment
 ALLUSERSPROFILE = C:\ProgramData
 # environment
+GOLAND_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\goland.vmoptions
+# environment
 LOGONSERVER = \\FUNZOO
 # environment
 NUMBER_OF_PROCESSORS = 16
 # environment
 ELECTRON_RUN_AS_NODE = 1
+# environment
+JETBRAINSCLIENT_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\jetbrainsclient.vmoptions
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver
+# environment
+IDEA_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\idea.vmoptions
+# environment
+DATASPELL_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\dataspell.vmoptions
 # automatic
 %F = $(notdir $%)
 # environment
 CONDA_EXE = D:\ProgramData\Miniconda3\Scripts\conda.exe
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_27040_BHMNIMMXWZZPGJEH
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_13100_ZNMRWYCMRVPZIHSX
 # environment
 COMPUTERNAME = FUNZOO
+# environment
+VSCODE_CRASH_REPORTER_PROCESS_TYPE = extensionHost
 # environment
 PROGRAMFILES = C:\Program Files (x86)
 # environment
 DRIVERDATA = C:\Windows\System32\Drivers\DriverData
 # environment
+JETBRAINS_CLIENT_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\jetbrains_client.vmoptions
+# environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-WT_SESSION = 32443cbb-0869-463a-a9d1-e9ac28c825c3
+WT_SESSION = 1f86e378-5dd9-4024-8aac-44df481183ce
 # environment
 USERNAME = zhufa
 # environment
@@ -98,14 +120,15 @@ PUBLIC = C:\Users\Public
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
+RIDER_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\rider.vmoptions
+# environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\zhufa\AppData\Roaming\Code\CachedData\441438abd1ac652551dbe4d408dfcec8a499b8bf
+VSCODE_CODE_CACHE_PATH = C:\Users\zhufa\AppData\Roaming\Code\CachedData\704ed70d4fd1c6bd6342c436f1ede30d1cff4710
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
-COM 
-MONPROGRAMFILES = C:\Program Files (x86)\Common Files
+COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
 # environment
 CONDA_PROMPT_MODIFIER = (base) 
 # environment
@@ -122,6 +145,8 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 LATEXWORKSHOP_DOCKER_LATEX = 
+# environment
+VSCODE_CRASH_REPORTER_SANDBOXED_HINT = 1
 # default
 MAKE_VERSION := 3.82.90
 # makefile
@@ -149,7 +174,7 @@ PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD
 # environment
 OS = Windows_NT
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\786c3495156c3a92eaef8cd4b097e255-1.75.1-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\786c3495156c3a92eaef8cd4b097e255-1.77.3-main-sock
 # environment
 HOMEPATH = \Users\zhufa
 # environment
@@ -162,8 +187,12 @@ MFLAGS = -Rrqp
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
 SYSTEMROOT = C:\WINDOWS
+# environment
+RUBYMINE_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\rubymine.vmoptions
 # automatic
 +D = $(patsubst %/,%,$(patsubst %\,%,$(dir $+)))
+# environment
+DATAGRIP_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\datagrip.vmoptions
 # automatic
 +F = $(notdir $+)
 # environment
@@ -176,6 +205,8 @@ _CONDA_ROOT = D:\ProgramData\Miniconda3
 WT_PROFILE_ID = {61c54bbd-c2c6-5271-96e7-009a87ff44bf}
 # environment
 COMSPEC = C:\WINDOWS\system32\cmd.exe
+# environment
+PYCHARM_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\pycharm.vmoptions
 # default
 MAKEFILES := 
 # automatic
@@ -192,22 +223,26 @@ SUFFIXES :=
 SYSTEMDRIVE = C:
 # environment
 PROCESSOR_REVISION = 6001
+# environment
+PYCHARM = D:\Program Files\JetBrains\PyCharm 2022.3.3\bin;
 # default
 .INCLUDE_DIRS = C:/MinGW/include
 # default
 .RECIPEPREFIX := 
 # environment
+CLION_VM_OPTIONS = D:\ja-netfilter-all\vmoptions\clion.vmoptions
+# environment
 CONDA_PREFIX = D:\ProgramData\Miniconda3
 # environment
 PROCESSOR_LEVEL = 23
 # environment
-VSCODE_PID = 27040
+VSCODE_PID = 13100
 # environment
 USERDOMAIN_ROAMINGPROFILE = FUNZOO
 # environment
 LANG = C
 # variable set hash-table stats:
-# Load=97/1024=9%, Rehash=0, Collisions=15/113=13%
+# Load=115/1024=11%, Rehash=0, Collisions=17/131=13%
 
 # Pattern-specific Variable Values
 
@@ -216,37 +251,42 @@ LANG = C
 # Directories
 
 # D:\Program Files\MATLAB\R2022a\runtime\win64 (key D:/Program Files/MATLAB/R2022a/runtime/win64, mtime 1661501336): 10 files, no impossibilities.
-# C:\Users\zhufa\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/zhufa/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1676622301): 5 files, no impossibilities.
-# D:\ProgramData\Miniconda3 (key D:/ProgramData/Miniconda3, mtime 1675045687): 81 files, no impossibilities.
-# %SYSTEMROOT%\System32\WindowsPowerShell\v1.0: could not be stat'd.
-# . (key d:/Github/nla, mtime 1676623735): 6 files, no impossibilities.
+# C:\Users\zhufa\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/zhufa/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1681486943): 5 files, no impossibilities.
+# D:\ProgramData\Miniconda3 (key D:/ProgramData/Miniconda3, mtime 1681746262): 81 files, no impossibilities.
+# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1681954219): 2932 files, no impossibilities.
+# C:\WINDOWS\System32\Wbem (key C:/WINDOWS/System32/Wbem, mtime 1678991434): 171 files, no impossibilities.
+# . (key d:/Github/nla, mtime 1681983897): 6 files, no impossibilities.
 # C:\MinGW\bin (key C:/MinGW/bin, mtime 1661155794): 131 files, no impossibilities.
 # C:\Windows\System32\OpenSSH: could not be stat'd.
 # D:\texlive\2022\bin\win32 (key D:/texlive/2022/bin/win32, mtime 1654419939): 554 files, no impossibilities.
+# C:\Program Files\Calibre2 (key C:/Program Files/Calibre2, mtime 1679578708): 24 files, no impossibilities.
 # D:\ProgramData\Miniconda3\Library\usr\bin: could not be stat'd.
+# D:\Program Files\Julia-1.8.3\bin (key D:/Program Files/Julia-1.8.3/bin, mtime 1671032948): 57 files, no impossibilities.
+# C:\WINDOWS\System32\OpenSSH: could not be stat'd.
 # C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1655347579): 8 files, no impossibilities.
 # D:\ProgramData\Miniconda3\Library\bin (key D:/ProgramData/Miniconda3/Library/bin, mtime 1651137143): 67 files, no impossibilities.
 # C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common (key C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common, mtime 1654404271): 10 files, no impossibilities.
-# %SystemRoot%\System32\Wbem: could not be stat'd.
 # C:\Users\zhufa\AppData\Local\Programs\Julia-1.8.0\bin: could not be stat'd.
 # D:\ProgramData\Miniconda3\condabin (key D:/ProgramData/Miniconda3/condabin, mtime 1651137143): 9 files, no impossibilities.
 # D:\ProgramData\Miniconda3\Scripts (key D:/ProgramData/Miniconda3/Scripts, mtime 1666534412): 60 files, no impossibilities.
 # D:\ProgramData\Miniconda3\Lib\bin: could not be stat'd.
-# D:\Program Files\Julia-1.8.3\bin (key D:/Program Files/Julia-1.8.3/bin, mtime 1671032948): 57 files, no impossibilities.
-# %SYSTEMROOT%\System32\OpenSSH: could not be stat'd.
+# C:\WINDOWS (key C:/WINDOWS, mtime 1681245033): 117 files, no impossibilities.
 # D:\ProgramData\Miniconda3\Library\mingw-w64\bin: could not be stat'd.
-# %SystemRoot%\system32: could not be stat'd.
-# C:\Windows (key C:/Windows, mtime 1676603937): 118 files, no impossibilities.
+# C:\WINDOWS\System32\WindowsPowerShell\v1.0 (key C:/WINDOWS/System32/WindowsPowerShell/v1.0, mtime 1676603085): 31 files, no impossibilities.
+# C:\Windows (key C:/Windows, mtime 1681245033): 117 files, no impossibilities.
 # C:\Program Files\Wolfram Research\WolframScript (key C:/Program Files/Wolfram Research/WolframScript, mtime 1660903577): 5 files, no impossibilities.
 # D:\Program Files\MATLAB\R2022a\bin (key D:/Program Files/MATLAB/R2022a/bin, mtime 1661501360): 21 files, no impossibilities.
-# C:\Windows\System32\Wbem (key C:/Windows/System32/Wbem, mtime 1676603362): 171 files, no impossibilities.
+# C:\Windows\System32\Wbem (key C:/Windows/System32/Wbem, mtime 1678991434): 171 files, no impossibilities.
 # D:\ProgramData\Miniconda3\bin: could not be stat'd.
-# C:\Windows\system32 (key C:/Windows/system32, mtime 1677160055): 2932 files, no impossibilities.
-# %SystemRoot%: could not be stat'd.
-# C:\Users\zhufa\AppData\Local\Microsoft\WindowsApps (key C:/Users/zhufa/AppData/Local/Microsoft/WindowsApps, mtime 1677039768): 29 files, no impossibilities.
+# C:\Windows\system32 (key C:/Windows/system32, mtime 1681954219): 2932 files, no impossibilities.
+# D:\Program Files\JetBrains\PyCharm 2022.3.3\bin (key D:/Program Files/JetBrains/PyCharm 2022.3.3/bin, mtime 1679128977): 27 files, no impossib 
+make.exe: *** No rule to make target 'all'.  Stop.
+
+ilities.
+# C:\Users\zhufa\AppData\Local\Microsoft\WindowsApps (key C:/Users/zhufa/AppData/Local/Microsoft/WindowsApps, mtime 1681252313): 29 files, no impossibilities.
 # C:\Windows\System32\WindowsPowerShell\v1.0 (key C:/Windows/System32/WindowsPowerShell/v1.0, mtime 1676603085): 31 files, no impossibilities.
 
-# 4305 files, no impossibilities in 30 directories.
+# 7606 files, no impossibilities in 32 directories.
 
 # Implicit Rules
 
@@ -302,16 +342,14 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 8 (7) / strings = 4153 / storage = 62671 B / avg = 15 B
-# current buf: size = 8174 B / used = 5523 B / count = 407 / avg = 13 B
-# other used: total = 54497 B / count = 3746 / avg = 14 B
-# other free: total = 70 B / max = 14 B / min = 3 B / avg = 10 B
+# strcache buffers: 8 (7) / strings = 4200 / storage = 63428 B / avg = 15 B
+# current buf: size = 8174 B / used = 6282 B / count = 462 / avg = 13 B
+# other used: total = 55254 B / count = 3738 / avg = 14 B
+# other free: total = 72 B / max = 14 B / min = 3 B / avg = 10 B
 
-# strcache performance: lookups = 4343 / hit rate = 4%
+# strcache performance: lookups = 7646 / hit rate = 45%
 # hash-table stats:
-# Load=4153/8192=51%, Rehash=0, Collisions=1776/4343=41%
-# Finished Make data base on Mon Feb 27 18:13:33 2023
+# Load=4200/8192=51%, Rehash=0, Collisions=2868/7646=38%
+# Finished Make data base on Thu Apr 20 18:34:41 2023
 
  
-make.exe: *** No rule to make target 'all'.  Stop.
-
