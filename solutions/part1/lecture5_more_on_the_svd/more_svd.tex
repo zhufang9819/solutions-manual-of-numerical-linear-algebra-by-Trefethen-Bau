@@ -273,48 +273,50 @@ Thus the area of the original ellipsoid is $\sigma_1 \sigma_2 \pi = 100 \pi$.
 
 \subsection{Exercise 5.4}
   
-Let $\bm{A}$ be an $m \times m$ complex matrix with singular values $\sigma_1, \sigma_2, \cdots, \sigma_m$, and let $\bm{u}_i$ and $\bm{v}_i$ be the corresponding left and right singular vectors. Then, we have $\bm{A}\bm{v}_i = \sigma_i \bm{u}_i$ and $\bm{A}^{\star} \bm{u}_i = \sigma_i^{\star}\bm{v}_i$, where $\bm{A}^\star$ is the conjugate transpose of $\bm{A}$ and $\sigma_k \in \mathbb{R}$. We define $\bm{\beta}_i = [a\bm{v}_i, b\bm{u}_i] \in \mathbb{C}^{2m}$ and consider the matrix
-$$
-\bm{B} = \begin{pmatrix}
-    \bm{0} & \bm{A}^\star \\
-\bm{A} & \bm{0}
-\end{pmatrix}
-$$
-Then, we have 
-$$
-\bm{B} \bm{\beta}_i = \begin{pmatrix}
+Let $\bm{A}$ be an $m \times m$ complex matrix with singular values $\sigma_1, \sigma_2, \cdots, \sigma_m$, and let $\bm{u}_i$ and $\bm{v}_i$ be the corresponding left and right singular vectors. If we define 
+\[ \bm{\beta}_i = \begin{pmatrix}
+a \bm{v}_i \\
+b \bm{u}_i \\
+\end{pmatrix} \in \mathbb{C}^{2m}, \]
+and the matrix
+\[ \bm{B} = \begin{pmatrix}
 \bm{0} & \bm{A}^\star \\
-\bm{A} & \bm{0}
-\end{pmatrix} \begin{pmatrix}
-a  \bm{v}_i\\
-b  \bm{u}_i
-\end{pmatrix} =  \begin{pmatrix}
+\bm{A} & \bm{0} \\
+\end{pmatrix}, \]
+then we claim that the eigenvalues of $ \bm{B} $ are $ \pm \sigma_1, \pm \sigma_2, \dots, \pm \sigma_m $.
+% Then, we have $\bm{A}\bm{v}_i = \sigma_i \bm{u}_i$ and $\bm{A}^{\star} \bm{u}_i = \sigma_i \bm{v}_i$, where $\bm{A}^\star$ is the conjugate transpose of $\bm{A}$ and $\sigma_k \in \mathbb{R}$. We define $\bm{\beta}_i = [a\bm{v}_i, b\bm{u}_i] \in \mathbb{C}^{2m}$ and consider the matrix
+% $$
+% \bm{B} = \begin{pmatrix}
+%     \bm{0} & \bm{A}^\star \\
+% \bm{A} & \bm{0}
+% \end{pmatrix}
+% $$
+Consider the product:
+$$
+\bm{B} \bm{\beta}_i =  \begin{pmatrix}
 b \sigma_i \bm{v}_i\\
 a \sigma_i \bm{u}_i
 \end{pmatrix}
 $$
-Next, we prove that the eigenvalues of $\bm{B}$ are $\pm\sigma_1, \pm \sigma_2, \cdots, \pm \sigma_m$.
+Given that \( \bm{\beta}_i \) is an eigenvector of \( \bm{B} \) with eigenvalue \( \lambda \), we deduce the following systems:
 
-Suppose $\bm{\beta}_i$ is the eigenvector of the corresponding eigenvalue $\sigma_i$ of the matrix $\bm{B}$, then we have
-$$
-\begin{cases}
-a\bm{v}_i &= b\bm{v}_i, \\
-b \bm{u}_i &= a\bm{u}_i
-\end{cases}
-$$
-which implies that $a = b$.
-Suppose $\bm{\beta}_i$ is the eigenvector of the corresponding eigenvalue $-\sigma_i$ of the matrix $\bm{B}$, then we have
-$$
-\begin{cases}
-a\bm{v}_i &= -b\bm{v}_i, \\
-b \bm{u}_i &= -a\bm{u}_i
-\end{cases}
-$$
-which implies that $a = -b$. Let
+For \( \lambda = \sigma_i \):
+\[ \left\{ \begin{array}{l}
+a = b \\
+b = a \\
+\end{array} \right. \]
+And for \( \lambda = -\sigma_i \):
+\[ \left\{ \begin{array}{l}
+a = -b \\
+b = -a \\
+\end{array} \right. \]
+From these systems, it is evident that \( a = b \) and \( a = -b \), respectively. 
+
+To construct the eigen decomposition of \( \bm{B} \), we define the matrix:
 $$
 \bm{S} = \begin{pmatrix}
-a\bm{v}_1, &a\bm{v}_2, &\cdots, &a\bm{v}_m, &a\bm{v}_{m+1}, &a\bm{v}_{m+2}, &\cdots,&a\bm{v}_{2m} \\
-a\bm{u}_1, &a\bm{u}_2, &\cdots,&a\bm{u}_m, &-a\bm{u}_{m+1}, &-a\bm{u}_{m+2}, &\cdots, &-a\bm{u}_{2m}
+a\bm{v}_1, &a\bm{v}_2, &\cdots, &a\bm{v}_m, &a\bm{v}_{1}, &a\bm{v}_{2}, &\cdots,&a\bm{v}_{m} \\
+a\bm{u}_1, &a\bm{u}_2, &\cdots,&a\bm{u}_m, &-a\bm{u}_{1}, &-a\bm{u}_{2}, &\cdots, &-a\bm{u}_{m}
 \end{pmatrix}
 $$
 as well as
