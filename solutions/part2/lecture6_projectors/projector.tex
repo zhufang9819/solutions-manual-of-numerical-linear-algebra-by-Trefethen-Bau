@@ -62,4 +62,107 @@
     \end{figure}
 \end{proof}
 
+\subsection{Exercise 6.2}
+We begin by considering the matrix \(\bm{F}\) defined by
+\[
+\bm{F} =
+\begin{pmatrix}
+	0 & \cdots & 0 & 1 \\
+	0 & \cdots & 1 & 0 \\
+	\vdots & \ddots & \vdots & \vdots \\
+	1 & \cdots & 0 & 0
+\end{pmatrix},
+\]
+where \(\bm{F}\) is a permutation matrix that reverses the order of the basis vectors. Consequently, we define
+\[
+\bm{E} = \frac{\bm{I} + \bm{F}}{2} = 
+\begin{pmatrix}
+	\frac{1}{2} & 0 & \cdots & 0 & \frac{1}{2} \\
+	0 & \frac{1}{2} & \cdots & \frac{1}{2} & 0 \\
+	\vdots & \vdots & \ddots & \vdots & \vdots \\
+	0 & \cdots & 1 & \cdots & 0 \\
+	\vdots & \vdots & \vdots & \ddots & \vdots \\
+	\frac{1}{2} & \cdots & 0 & 0 & \frac{1}{2}
+\end{pmatrix},
+\]
+where \(\bm{I}\) is the identity matrix. Observing that \(\bm{F}\) is its own inverse, i.e., \(\bm{F}^2 = \bm{I}\), and that the adjoint of a matrix is equal to its conjugate transpose, we deduce that the adjoint of \(\bm{E}\), denoted \(\bm{E}^\star\), satisfies
+\[
+\bm{E}^\star = \left(\frac{\bm{I} + \bm{F}}{2}\right)^\star = \bm{E},
+\]
+since both \(\bm{I}\) and \(\bm{F}\) are real and symmetric, and thus equal to their own adjoints.
+
+Next, we compute \(\bm{E}^2\) as follows:
+\[
+\bm{E}^2 = \left(\frac{\bm{I} + \bm{F}}{2}\right)^2 = \frac{\bm{I} + 2\bm{F} + \bm{F}^2}{4} = \frac{2\bm{I} + 2\bm{F}}{4} = \frac{\bm{I} + \bm{F}}{2} = \bm{E}.
+\]
+Hence, \(\bm{E}^2 = \bm{E}\), which implies that \(\bm{E}\) is idempotent. Additionally, since for any vector \(\bm{v}\), the equality \(\langle \bm{E}\bm{v}, \bm{v} \rangle = \langle \bm{v}, \bm{E}\bm{v} \rangle\) holds, where \(\langle \cdot, \cdot \rangle\) denotes the inner product, it follows that \(\bm{E}\) is self-adjoint. Combining the idempotence and self-adjointness of \(\bm{E}\), we conclude that \(\bm{E}\) is an orthogonal projector.
+
+\subsection{Exercise 5.3}
+
+Suppose that $\bm{A}$ is full rank. This implies that $\bm{A}$ has $n$ non-zero singular values. Consequently, the matrix $\bm{A}^\star \bm{A}$, where $\bm{A}^\star$ denotes the conjugate transpose of $\bm{A}$, has $n$ non-zero eigenvalues $\lambda_1, \ldots, \lambda_n$. The determinant of $\bm{A}^\star \bm{A}$ is then given by the product of its eigenvalues:
+\[
+\det(\bm{A}^\star \bm{A}) = \prod_{i=1}^n \lambda_i \neq 0,
+\]
+which indicates that $\bm{A}^\star \bm{A}$ is non-singular.
+
+For the ``only if'' part of the proof, we invoke the singular value decomposition (SVD). Since $\bm{A}^\star \bm{A}$ is non-singular, it follows from Theorem 5.2 that
+\[
+\mathrm{range}(\bm{A}) = \langle \bm{u}_1, \ldots, \bm{u}_n \rangle,
+\]
+where the $\bm{u}_i$ are left singular vectors of $\bm{A}^\star \bm{A}$. This space is $n$-dimensional, which confirms that the matrix $\bm{A}$ is indeed full rank.
+
+
+\subsection{Exercise 6.4 (a) }
+We first compute $\bm{P}$ as 
+$$
+\bm{P} = \bm{A} (\bm{A}^\star \bm{A} )^{-1} \bm{A}^\star = 
+\begin{pmatrix}
+	\frac{1}{2} & 0 & \frac{1}{2}\\
+	0 & 1 & 0 \\
+	\frac{1}{2} & 0 & \frac{1}{2}
+\end{pmatrix} 
+$$
+then 
+$$
+\bm{P} \begin{pmatrix}
+	1 \\
+	2\\
+	3
+\end{pmatrix} = \begin{pmatrix}
+2 \\
+2\\
+2
+\end{pmatrix}.
+$$
+
+\subsection{Exercise 6.4(b) }
+We first compute $\bm{P}$ as 
+$$
+\bm{P} = \bm{B} (\bm{B}^\star \bm{B} )^{-1} \bm{B}^\star = 
+\begin{pmatrix}
+	\frac{5}{6} & \frac{1}{3} & \frac{1}{6}\\
+	\frac{1}{3} & \frac{1}{3} &-\frac{1}{3} \\
+	\frac{1}{6} & -\frac{1}{3} & \frac{5}{6}
+\end{pmatrix} 
+$$
+then 
+$$
+\bm{P} \begin{pmatrix}
+	1 \\
+	2\\
+	3
+\end{pmatrix} = \begin{pmatrix}
+	2 \\
+	0\\
+	2
+\end{pmatrix}.
+$$
+
+\subsection{Exercise 6.5}
+\textcolor{red}{We first show that $\| \bm{P} \|_2 \geq 1$. Suppose that there exists a matrix $\bm{P} $ such that $\| \bm{P} \|_2 < 1$, then we know that the largest singular value $\sigma_{\max} $ of $\bm{P}$ is less than $1$ then 
+\begin{equation}
+|\det (\bm{P}^2 ) | = |\det (\bm{P} ) ^2| = |\prod_i \sigma_i^2| < |\prod_i \sigma_i| = |\det (\bm{P} )|
+\label{eq:ex65}
+\end{equation}
+then $\bm{P}^2 \neq \bm{P}$, which is contradicted with that the matrix $\bm{P}$ is a projector, and hence we conclude that $\| \bm{P}\|_2 \geq 1$. Suppose that the SVD of $\bm{P}$ are $\bm{P} = \bm{U} \bm{\Sigma} \bm{V}^\star$, then if $\| \bm{P} \| = 1$, then by \eqref{eq:ex65}, we can  get that all the singular values of $\bm{P}$ are $1$, i.e., $\bm{\Sigma}$ is the identity matrix and hence $\bm{P}^\star =  $}
 \end{document}
