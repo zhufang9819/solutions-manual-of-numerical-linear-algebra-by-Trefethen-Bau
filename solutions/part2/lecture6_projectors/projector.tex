@@ -159,10 +159,20 @@ $$
 $$
 
 \subsection{Exercise 6.5}
-\textcolor{red}{We first show that $\| \bm{P} \|_2 \geq 1$. Suppose that there exists a matrix $\bm{P} $ such that $\| \bm{P} \|_2 < 1$, then we know that the largest singular value $\sigma_{\max} $ of $\bm{P}$ is less than $1$ then 
-\begin{equation}
-|\det (\bm{P}^2 ) | = |\det (\bm{P} ) ^2| = |\prod_i \sigma_i^2| < |\prod_i \sigma_i| = |\det (\bm{P} )|
-\label{eq:ex65}
-\end{equation}
-then $\bm{P}^2 \neq \bm{P}$, which is contradicted with that the matrix $\bm{P}$ is a projector, and hence we conclude that $\| \bm{P}\|_2 \geq 1$. Suppose that the SVD of $\bm{P}$ are $\bm{P} = \bm{U} \bm{\Sigma} \bm{V}^\star$, then if $\| \bm{P} \| = 1$, then by \eqref{eq:ex65}, we can  get that all the singular values of $\bm{P}$ are $1$, i.e., $\bm{\Sigma}$ is the identity matrix and hence $\bm{P}^\star =  $}
+We first show that $\| \bm{P} \|_2 \geq 1$. Choose $\bm{x}$ such that $ \bm{Px} = \bm{y} \neq \bm{0}$, then $ \bm{P} \bm{y} = \bm{P}^2 \bm{x} = \bm{P} \bm{x} = \bm{y}$, then we have
+$$
+\| \bm{P} \|_2 = \max_{\bm{x} }  \frac{\| \bm{P x} \|_2}{ \| \bm{x} \|_2 } \geq \frac{\| \bm{P y} \|_2}{ \| \bm{y} \|_2 } = 1.
+$$
+Assume that $\bm{P} $ is orthogonal projector, then we have that
+$$
+\bm {P}  = \hat{\bm{Q}} \hat{\bm{Q}}^{\star}
+$$
+where the columns of $\hat{\bm{Q}}$ are orthonormal. Hence we can get that
+$$
+1\leq \| \bm{P} \|_2 \leq \|\hat{\bm{Q}} \|_2 \| \hat{\bm{Q}}^{\star}\|_2 \leq 1
+$$
+which means that $\| \bm{P} \|_2 = 1$. \color{red}{If $\| \bm{P}\|_2 = 1$, then we have that 
+$$
+\bm{P} 
+$$ }
 \end{document}
