@@ -16,7 +16,7 @@ Don't hesitate to contact me if you have any questions regarding this solution m
 #### Lecture 5. More on the SVD (Completed)
 
 ### Part II QR Factorization and Least Squares (Ongoing)
-#### Lecture 6. Projectors (Ongoing)
+#### Lecture 6. Projectors (Completed)
 
 ## Acknowledgement
 I would like to express my gratitude to the following sources for their invaluable contributions to this solution manual:

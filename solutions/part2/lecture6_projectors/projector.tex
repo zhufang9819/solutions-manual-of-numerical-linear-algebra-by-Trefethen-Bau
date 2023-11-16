@@ -159,7 +159,7 @@ $$
 $$
 
 \subsection{Exercise 6.5}
-We first show that $\| \bm{P} \|_2 \geq 1$. Choose $\bm{x}$ such that $ \bm{Px} = \bm{y} \neq \bm{0}$, then $ \bm{P} \bm{y} = \bm{P}^2 \bm{x} = \bm{P} \bm{x} = \bm{y}$, then we have
+The solution is based on the answer on \href{https://math.stackexchange.com/questions/1109755/a-projection-p-is-orthogonal-if-and-only-if-its-spectral-norm-is-1}{Mathematics Stack Exchange}. We first show that $\| \bm{P} \|_2 \geq 1$. Choose $\bm{x}$ such that $ \bm{Px} = \bm{y} \neq \bm{0}$, then $ \bm{P} \bm{y} = \bm{P}^2 \bm{x} = \bm{P} \bm{x} = \bm{y}$, then we have
 $$
 \| \bm{P} \|_2 = \max_{\bm{x} }  \frac{\| \bm{P x} \|_2}{ \| \bm{x} \|_2 } \geq \frac{\| \bm{P y} \|_2}{ \| \bm{y} \|_2 } = 1.
 $$
@@ -171,8 +171,9 @@ where the columns of $\hat{\bm{Q}}$ are orthonormal. Hence we can get that
 $$
 1\leq \| \bm{P} \|_2 \leq \|\hat{\bm{Q}} \|_2 \| \hat{\bm{Q}}^{\star}\|_2 \leq 1
 $$
-which means that $\| \bm{P} \|_2 = 1$. \color{red}{If $\| \bm{P}\|_2 = 1$, then we have that 
+which means that $\| \bm{P} \|_2 = 1$. If $\| \bm{P} \| = 1$, we only to show that $\mathrm{range}(\bm{P})  \perp \mathrm{null} (\bm{P})$. Let $\bm{x}$ be a vector such that $\bm{x} \in \mathrm{null} (\bm{P})^{\perp} $ and consider $ \bm{y} := \bm{Px} - \bm{x} $. It is clear that $\bm{y} \in \mathrm{null} (\bm{P}) $, then $\bm{x} \perp \bm{y} $. Since $\| \bm{P}\|_2 = 1$, we have $\| \bm{Px}\|_2 \leq \| \bm{x} \|_2 $. It follows that
 $$
-\bm{P} 
-$$ }
+ \| \bm{x} \|_2 \leq \| \bm{x} \|_2 + \|\bm{y} \|_2 = \| \bm{x} + \bm{y} \|_2 = \| \bm{Px}\|_2 \leq \| \bm{x} \|_2
+$$
+and hence $\bm{y} = \bm{0}$, which implies that $\| \bm{Px} \|_2 = \| \bm{x} \|_2$ and thus $\bm{x} \in \mathrm{range} (\bm{P}) $. Therefore $\mathrm{null} (\bm{P})^{\perp} \subset \mathrm{range} (\bm{P}) $. On the other hand, if $\bm{z} \in \mathrm{range} (\bm{P}), \bm{Pz} = \bm{z} $, Let $\bm{x} \in \mathrm{null} (\bm{P}) $ and $\bm{y} \in  \mathrm{null} (\bm{P})^\perp$ such that $\bm{z} = \bm{x} + \bm{y}$, so $\bm{Pz} = \bm{Px} + \bm{Py}  = \bm{Py}$. Since $\mathrm{null} (\bm{P})^\perp \subset \mathrm{range} (\bm{P}) $, we have $\bm{Py} = \bm{y} $ and $\bm{y} = \bm{z} $ and $\bm{z} \in \mathrm{null} (\bm{P})^\perp $. Therefore $\mathrm{range} (\bm{P}) \subset \mathrm{null} (\bm{P})^\perp$. From $\mathrm{range} (\bm{P}) \subset \mathrm{null} (\bm{P})^\perp $ and $\mathrm{range} (\bm{P}) \supset \mathrm{null} (\bm{P})^\perp$, it follows that $\mathrm{range} (\bm{P}) = \mathrm{null} (\bm{P})^\perp$.
 \end{document}
